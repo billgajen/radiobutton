@@ -1,0 +1,142 @@
+/* 	--------------------------------------------------
+    MIXINS
+	PROJECT : PROJECT TITAN
+	BY : GAJEN & PRAVIEN
+	DATE : NOVEMBER 2015
+	-------------------------------------------------- */
+
+
+// Margin Shorthand
+
+.margin (@size-left: 10, @size-top: 10, @size-right: 10, @size-bottom: 10) {
+	margin: e(%("%dpx", @size-left)) e(%("%dpx", @size-top)) e(%("%dpx", @size-right)) e(%("%dpx", @size-bottom));
+}
+
+// Padding Shorthand
+
+.padding (@size-left: 10, @size-top: 10, @size-right: 10, @size-bottom: 10) {
+	padding: e(%("%dpx", @size-left)) e(%("%dpx", @size-top)) e(%("%dpx", @size-right)) e(%("%dpx", @size-bottom));
+}
+
+/* Background-Position
+----------------------------------------------------------------*/
+
+.background-position (@x: 0, @y: 0) {
+	background-position: e(%("%dpx", @x)) e(%("%dpx", @y));
+}
+
+/* Effects and Gradients
+----------------------------------------------------------------*/
+
+/* Two tone color gradient */
+
+.gradient(@color: #F5F5F5, @start: #EEEEEE, @stop: #FFFFFF) {
+  background: @color;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+  background: -o-linear-gradient(@stop,
+                                 @start);
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+}
+
+
+/* Border-radius */
+
+.border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+
+	-webkit-border-top-right-radius: e(%("%dpx", @topright));
+	-webkit-border-bottom-right-radius: e(%("%dpx", @bottomright));
+	-webkit-border-bottom-left-radius: e(%("%dpx", @bottomleft));
+	-webkit-border-top-left-radius: e(%("%dpx", @topleft));
+
+	-moz-border-top-right-radius: e(%("%dpx", @topright));
+	-moz-border-bottom-right-radius: e(%("%dpx", @bottomright));
+	-moz-border-bottom-left-radius: e(%("%dpx", @bottomleft));
+	-moz-border-top-left-radius: e(%("%dpx", @topleft));
+
+	border-top-right-radius: e(%("%dpx", @topright));
+	border-bottom-right-radius: e(%("%dpx", @bottomright));
+	border-bottom-left-radius: e(%("%dpx", @bottomleft));
+	border-top-left-radius: e(%("%dpx", @topleft));
+
+	.background-clip(padding-box);
+}
+
+/* Transition all properties */
+
+.transition(@property:all, @duration:0.2s, @ease:ease-out) {
+  -webkit-transition: @property @duration @ease;
+  -moz-transition: @property @duration @ease;
+  -ms-transition: @property @duration @ease;
+  -o-transition: @property @duration @ease;
+  transition: @property @duration @ease;
+}
+
+/* box shadow */
+
+.box-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+  -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+
+/* Layout
+----------------------------------------------------------------*/
+
+.border-box() {
+	box-sizing: border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+}
+.background-clip(@argument: padding-box) {
+  -moz-background-clip: @argument;
+  -webkit-background-clip: @argument;
+  background-clip: @argument;
+}
+
+// Floats
+
+.fleft() {
+	float: left;
+}
+.fright() {
+	float: right;
+}
+.fclear(){
+	clear: both;
+}
+
+
+/* Flexbox
+----------------------------------------------------------------*/
+.flex() {
+	display: -webkit-box;		
+	display: -moz-box;			
+	display: -ms-flexbox;		
+	display: -webkit-flex;		
+	display: flex;
+}
+.flex-direction-vertical-col() {
+	-webkit-box-direction: normal;
+	-moz-box-direction: normal;
+	-webkit-box-orient: vertical;
+	-moz-box-orient: vertical;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.flex-order(@order: 0) {
+	-webkit-box-ordinal-group: @order;
+	-moz-box-ordinal-group: @order;
+	-ms-flex-order: @order;
+	-webkit-order: @order;
+	order: @order;
+}

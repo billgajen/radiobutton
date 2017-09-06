@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset = "UTF-8"/>
+       <script type="text/javascript" src="../../public/js/jquery-1.11.3.min.js"></script>
+       <script type="text/javascript" src="../../public/js/bootstrap/bootstrap.min.js"></script>
+       <script type="text/javascript" src="../../public/js/angular-1.4.8.min.js"></script>
+       <script type="text/javascript" src="../../public/js/app.js"></script>
+       <script type="text/javascript" src="../../public/js/controllers/mainController.js"></script>
+       <link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="../../dist/css/style.css">
+       <title>Sign Up</title>
+    </head>
+    <body ng-app="appTitan" ng-controller="mainController">
+        <header>
+           <div class="pop-up-header">
+               <h4>Sign Up For Free With pTitan</h4>
+                <p>Your Privacy Is Our Priority</p>       
+           </div>
+        </header>
+        <section class="row">
+            <div class="row-content">
+                <div class="col-sm-12">
+                    <div class="signup-content">
+                        <div class="facebook-signup">
+                            <a href="#" class="social-button facebook">Connect with Facebook</a>
+                            <p><span>We don't post anything without your permission</span></p>
+                            <h3>Why Facebook?</h3>
+                            <ul>
+                                <li>This verifies your account and ensures that we are sending money to a trusted person.</li>
+                                <li>People are 7x more likely to contribute if they can see who you are.</li>
+                                <li>Easily find and invite friends to chip in</li>
+                            </ul>
+                        </div>
+                        <h2>Or signup with email</h2>
+                        <div class="email-signup" >
+                            <form action="">
+                                <div class="form-group">
+                                    <input type="text" placeholder="First name" name="firstname">
+                                </div>
+                                 <div class="form-group">
+                                    <input type="text" placeholder="Last name" name="lastname">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Signup">
+                                </div>
+                            </form>
+                        </div>
+                        <h2>Or signin with email </h2>
+                        <div class="email-signup" >
+                            <form action="">
+                                <div class="form-group">
+                                    <input class="" type="email" placeholder="Email" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input class="" type="password" placeholder="Password" name="password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Signin">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="pop-up-footer">
+                 <p>Already have an account? <a href="#" ng-click="switchForm(signin)">Log In</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

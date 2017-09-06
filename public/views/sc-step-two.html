@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset = "UTF-8"/>
+       <link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="../../dist/css/style.css">
+        <title>Campaign Page</title>
+    </head>
+    <body>
+        <header>
+           <div class="header-container">
+               <div class="logo"><a href="#"><img src="../../public/images/logo-qol.png" alt="logo"></a></div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <button class="camp-button">Start Campaign</button>
+           </div>
+        </header>
+        <section class="row title-area row-one">
+            <div class="row-content">
+                <div class="col-sm-12">
+                    <h1>This is your campain name</h1>
+                    <p>and your</p>
+                </div>
+            </div>
+        </section>    
+        <section class="row">
+            <div class="row-content">
+                <form action="">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="image_video">Campaign image/Video</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="file" name="image_video" id="image_video">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="campaign_intro">Short intro</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <textarea name="campaign_intro" id="campaign_intro"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="campaign_story">About your Campaign</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <textarea name="campaign_story" id="campaign_story"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="campaign_location">Location</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" name="campaign_location" id="campaign_location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="campaign_duration">Campaign duration</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" name="campaign_duration" id="campaign_duration">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button>SAVE &amp; PREVIEW</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </body>
+</html>
