@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
 //Database connection
-mongoose.connect('mongodb://billgajen:Bmangal238#@cluster0-shard-00-00-00kih.mongodb.net:27017,cluster0-shard-00-01-00kih.mongodb.net:27017,cluster0-shard-00-02-00kih.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin');
+mongoose.connect('mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/dist'));
@@ -47,11 +47,11 @@ app.get('/startCampaign', function(req, res){
         res.sendfile('./public/views/start-campaign.html');
 });
 
-app.post('/api/postCamoaign', function(req, res) {
-
+app.post('/api/postCampaign', function(req, res) {
+    console.log(req.body.campaignTitle);
     Campaign.create({
-        goalAmount : req.body.goalAmount,
         campaignTitle: req.body.campaignTitle,
+        goalAmount : req.body.goalAmount,
         done : false
 
     });

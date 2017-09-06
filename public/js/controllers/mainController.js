@@ -10,7 +10,7 @@ appTitan.controller('mainController', ['$scope', '$http', function($scope, $http
     // Start camapaign
     $scope.startCampaignData = {};
     $scope.createCampaign = function(){
-        $http.post('/api/postCamoaign', $scope.startCampaignData)
+        $http.post('/api/postCampaign', $scope.startCampaignData)
             .success(function(data) {
                 console.log(data);
             })
