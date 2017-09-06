@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
 //Database connection
-mongoose.connect('mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
+mongoose.connect('mongodb://<username>:<password>@ds127864.mlab.com:27864/radioquiz');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/dist'));
