@@ -18,4 +18,35 @@ appTitan.controller('mainController', ['$scope', '$http', function($scope, $http
                 console.log('Error: ' + data);
             });
     };
+    
+    // Create Quiz
+	$scope.questions = [{questionName: 'Type question 1 here'}];
+    $scope.startQuizData = {
+		'title':'',
+		'category':'',
+		'questionAndAnswers': $scope.questions
+	};
+
+	$scope.addNewQuestion = function() {
+		var newItemNo = $scope.questions.length+1;
+		$scope.questions.push({'questionName':'Type question '+newItemNo+ ' here'});
+	};
+	$scope.removeLastQuestion = function() {
+		var lastItem = $scope.questions.length-1;
+		$scope.questions.splice(lastItem);
+	};
+
+	$scope.createQuiz = function(){
+        console.log($scope.startQuizData);
+        $http.post('/api/postQuiz', $scope.startQuizData)
+            .success(function(data) {
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+	
+
+	
 }]);

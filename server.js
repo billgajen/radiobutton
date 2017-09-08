@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
 //Database connection
-mongoose.connect('mongodb://<username>:<password>@ds127864.mlab.com:27864/radioquiz');
+mongoose.connect('mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/dist'));
@@ -28,7 +28,6 @@ var campaignSchema = new Schema({
 var quizSchema = new Schema({
     title: String,
     category: String,
-    Tags: String,
     questionAndAnswers: [
         {
             question: String,
@@ -37,7 +36,7 @@ var quizSchema = new Schema({
             answerThree: String,
             answerFour: String
         }
-    ],
+    ]
 });
 
 var Campaign = mongoose.model('Campaign', campaignSchema);
@@ -48,12 +47,22 @@ app.get('/startCampaign', function(req, res){
 });
 
 app.post('/api/postCampaign', function(req, res) {
-    console.log(req.body.campaignTitle);
-    Campaign.create({
+     Campaign.create({
         campaignTitle: req.body.campaignTitle,
         goalAmount : req.body.goalAmount,
         done : false
+    });
+});
 
+var Quiz = mongoose.model('Quiz', quizSchema);
+
+app.post('/api/postQuiz', function(req, res) {
+	console.log(req.body.questionAndAnswers.question);
+    Quiz.create({
+        title: req.body.title,
+        category : req.body.category,
+        questionAndAnswers : req.body.questionAndAnswers,
+        done : false
     });
 });
 
