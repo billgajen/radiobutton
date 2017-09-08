@@ -30,7 +30,7 @@ var quizSchema = new Schema({
     category: String,
     questionAndAnswers: [
         {
-            question: String,
+            questionName: String,
             answerOne: String,
             answerTwo: String,
             answerThree: String,
@@ -39,12 +39,13 @@ var quizSchema = new Schema({
     ]
 });
 
-var Campaign = mongoose.model('Campaign', campaignSchema);
-
 //Routes
 app.get('/startCampaign', function(req, res){
-        res.sendfile('./public/views/start-campaign.html');
+        res.sendFile(__dirname + '/public/views/start-campaign.html');
 });
+
+//Post data
+var Campaign = mongoose.model('Campaign', campaignSchema);
 
 app.post('/api/postCampaign', function(req, res) {
      Campaign.create({
@@ -57,13 +58,23 @@ app.post('/api/postCampaign', function(req, res) {
 var Quiz = mongoose.model('Quiz', quizSchema);
 
 app.post('/api/postQuiz', function(req, res) {
-	console.log(req.body.questionAndAnswers.question);
     Quiz.create({
         title: req.body.title,
         category : req.body.category,
         questionAndAnswers : req.body.questionAndAnswers,
         done : false
     });
+});
+
+app.get('/viewQuiz', function(req, res){
+    res.sendFile(__dirname + '/public/views/campaign.html');
+	
+	Quiz.find({ title: 'Vijay movie questions' }, function(err, quiz) {
+	  if (err) throw err;
+
+	  // object of the user
+	  console.log(res.json(quiz[0].questionAndAnswers[0].answerOne));
+	});
 });
 
 
