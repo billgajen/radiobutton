@@ -45,18 +45,13 @@ var quizSchema = new Schema({
 app.get('/startCampaign', function(req, res){
         res.sendFile(__dirname + '/public/views/start-campaign.html');
 });
-
-//Post data
-var Campaign = mongoose.model('Campaign', campaignSchema);
-
-app.post('/api/postCampaign', function(req, res) {
-     Campaign.create({
-        campaignTitle: req.body.campaignTitle,
-        goalAmount : req.body.goalAmount,
-        done : false
-    });
+var quizId = null;
+app.get('/viewQuiz', function(req, res){
+    res.sendFile(__dirname + '/public/views/campaign.html');
+    var quizId = req.query.gpQ;
 });
-
+console.log(quizId);
+//Post data
 var Quiz = mongoose.model('Quiz', quizSchema);
 
 app.post('/api/postQuiz', function(req, res) {
@@ -68,14 +63,15 @@ app.post('/api/postQuiz', function(req, res) {
     });
 });
 
-app.get('/viewQuiz', function(req, res){
-    res.sendFile(__dirname + '/public/views/campaign.html');
-	
-	Quiz.find({ title: 'Vijay movie questions' }, function(err, quiz) {
+//Get data
+var ObjectId = require('mongodb').ObjectID;
+
+app.get('/api/getQuizData', function(req, res){
+	Quiz.find({_id:ObjectId("59b2ac3cfc2283480879025c")}, function(err, quiz) {
 	  if (err) throw err;
 
 	  // object of the user
-	  console.log(res.json(quiz[0].questionAndAnswers[0].answerOne));
+	  res.json(quiz[0]);
 	});
 });
 

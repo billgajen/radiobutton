@@ -37,7 +37,7 @@ appTitan.controller('mainController', ['$scope', '$http', function($scope, $http
 	};
 
 	$scope.createQuiz = function(){
-        console.log($scope.startQuizData);
+ 
         $http.post('/api/postQuiz', $scope.startQuizData)
             .success(function(data) {
                 console.log(data);
@@ -47,6 +47,15 @@ appTitan.controller('mainController', ['$scope', '$http', function($scope, $http
             });
     };
 	
-
+    //Get Quiz data
+    $scope.quizData = '';
+    $http.get('/api/getQuizData')
+    .success(function(data) {
+        console.log(data);
+      $scope.quizData = data;
+    })
+    .catch(function(errRes) {
+      // Handle errRess
+    });
 	
 }]);
