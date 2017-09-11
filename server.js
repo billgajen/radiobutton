@@ -5,6 +5,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
+//Mongoose Promise
+mongoose.Promise = Promise;
 //Database connection
 mongoose.connect('mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
 
