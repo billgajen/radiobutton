@@ -1,4 +1,4 @@
-appTitan.controller('mainController', ['$scope', '$http', function($scope, $http){
+appTitan.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location){
     // Signup form
     $scope.form = 'signup';
     
@@ -49,7 +49,8 @@ appTitan.controller('mainController', ['$scope', '$http', function($scope, $http
 	
     //Get Quiz data
     $scope.quizData = '';
-    $http.get('/api/getQuizData')
+    $scope.qStringGPQ = $location.search()['gpQ'];
+    $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
         console.log(data);
       $scope.quizData = data;
@@ -57,5 +58,4 @@ appTitan.controller('mainController', ['$scope', '$http', function($scope, $http
     .catch(function(errRes) {
       // Handle errRess
     });
-	
 }]);
