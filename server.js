@@ -43,12 +43,11 @@ var quizSchema = new Schema({
 app.get('/startCampaign', function(req, res){
         res.sendFile(__dirname + '/public/views/start-campaign.html');
 });
-var quizId = null;
+
 app.get('/viewQuiz', function(req, res){
     res.sendFile(__dirname + '/public/views/campaign.html');
-    var quizId = req.query.gpQ;
 });
-console.log(quizId);
+
 //Post data
 var Quiz = mongoose.model('Quiz', quizSchema);
 
@@ -65,7 +64,10 @@ app.post('/api/postQuiz', function(req, res) {
 var ObjectId = require('mongodb').ObjectID;
 
 app.get('/api/getQuizData', function(req, res){
-	Quiz.find({_id:ObjectId("59b2ac3cfc2283480879025c")}, function(err, quiz) {
+    
+    var quizId = req.query.gpQ;
+    console.log(quizId);
+    Quiz.find({_id:ObjectId("59b2ac3cfc2283480879025c")}, function(err, quiz) {
 	  if (err) throw err;
 
 	  // object of the user
