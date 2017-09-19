@@ -52,8 +52,7 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
     $scope.qStringGPQ = $location.search()['gpQ'];
     $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
-        console.log(data);
-      $scope.quizData = data;
+    	$scope.quizData = data;
     })
     .catch(function(errRes) {
       // Handle errRess

@@ -21,12 +21,6 @@ app.use(morgan('dev'));
 var Schema = mongoose.Schema;
 
 // Create a Schema
-var campaignSchema = new Schema({
-    goalAmount: String,
-    campaignTitle: String
-});
-
-// Create a Schema
 var quizSchema = new Schema({
     title: String,
     category: String,
@@ -70,7 +64,7 @@ app.get('/api/getQuizData/:qId', function(req, res){
 	Quiz.find({_id:ObjectId(req.params.qId)}, function(err, quiz) {
 	  if (err) throw err;
 
-	  // object of the user
+	  // Quiz objects
 	  res.json(quiz[0]);
 	});
 });
