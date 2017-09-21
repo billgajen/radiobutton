@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset = "UTF-8"/>
+       <meta charset = "UTF-8"/>
        <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
        <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
        <script type="text/javascript" src="/js/angular-1.4.8.min.js"></script>
@@ -11,7 +11,7 @@
        <script type="text/javascript" src="/js/controllers/mainController.js"></script>
        <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css">
        <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <title>Campaign Page</title>
+       <title>Campaign Page</title>
     </head>
     <body ng-app="appTitan" ng-controller="mainController">
         <header>
@@ -19,157 +19,87 @@
                <div class="logo"><a href="#"><img src="/images/logo-qol.png" alt="logo"></a></div>
                 <nav>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li>
+                        	<a href="#">Categories</a>
+                        	<ul>
+                        		<li><a href="#">Automobile</a></li>
+                        		<li><a href="#">Education</a></li>
+                        		<li><a href="#">General</a></li>
+                        		<li><a href="#">Geography</a></li>
+                        		<li><a href="#">Movies</a></li>
+                        		<li><a href="#">Music</a></li>
+                        		<li><a href="#">Nature</a></li>
+                        		<li><a href="#">Politics</a></li>
+                        		<li><a href="#">Science</a></li>
+                        		<li><a href="#">Sports</a></li>
+                        	</ul>
+                        </li>
                     </ul>
                 </nav>
-                <button class="camp-button">Start Campaign</button>
+                <button class="camp-button">Create a Quiz</button>
            </div>
         </header>
-        <section class="row title-area row-one">
-            <div class="row-content">
+        <section class="row row--one hero">
+			<div class="hero__image" style='background: url("/images/home-hero.jpg") no-repeat;'></div>
+        </section>    
+        <section class="row title-area">
+            <div class="row__content row__content--quiz">
                 <div class="col-sm-12">
                     <h1>{{ quizData.title }}</h1>
-                    <ul>
-                        <li>London, UK</li>
-                        <li>Category</li>
-                    </ul>
+                    <p>{{quizData.intro}}</p>
                 </div>
             </div>
         </section>    
-        <section class="row">
-            <div class="row-content">
-                <div class="col-sm-8">
-                    <div class="camapign-image">
-                        <a href="#"><img src="/images/rhino.jpg" alt="rhino"></a>
-                    </div>
-                    <div class="share-option">
-                        <ul>
-                            <li><a href="#"><img src="/images/dw.png" alt="linkdin"></a></li>
-                            <li><a href="#"><img src="/images/link.png" alt="linkdin"></a></li>
-                            <li><a href="#"><img src="/images/plus.png" alt="linkdin"></a></li>
-                            <li><a href="#"><img src="/images/tick.png" alt="linkdin"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="campaign-stats white-pod">
-                        <h2>£101,498<span>Total raised</span><span>of <strong>£125,000</strong> goal</span></h2>
-                        <div class="days-left">
-                            <p><span>15</span> Days to go</p>
-                        </div>
-                        <a href="#" class="button">Back this campaign</a>
-                    </div>
-                    <div class="campaigner-details">
-                        <h4>Other Ways To Contact</h4>
-                        <p><span>In Person</span><br>
-                        Mr. Addington Dothraky
-                        </p>
-                        <p><span>By Phone</span><br>
-                        Tel 02031234567<br>
-                        Mob 0712234356
-                        </p>
-                        <p><span>By Post</span><br>
-                        By cheque to the farrows, maidstone, kent, ME159ZJ
-                        </p>
-                        
-                    </div>
-                </div>
+        <section class="row content-area">
+            <div class="row__content row__content--quiz">
+            	<div class="col-sm-12">
+            		<div class="question-answers">
+						<ol>
+							<li class="question-answers__item" ng-repeat="questions in quizData.questionAndAnswers">
+								<div class="question-answers__item__wrapper">
+									<div class="question-answers__item__question">
+										<h3>{{ questions.questionName }}</h3>
+									</div>
+									<div class="question-answers__item__answers">
+										<ul>
+											<li>{{questions.answerOne}}</li>
+											<li>{{questions.answerTwo}}</li>
+											<li>{{questions.answerThree}}</li>
+											<li>{{questions.answerFour}}</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ol>
+            		</div>
+            	</div>
+             	<div class="col-sm-12">
+            		<div class="row related-quizes">
+            			<div class="col-sm-4 related-quizes__item">
+            				<div class="related-quizes__item__image">
+            					<img src="/images/banner.jpg" alt="Quiz Banner" />
+            				</div>
+            				<div class="related-quizes__item__info">
+            					<h4>{{ relatedQuizData.title }}</h4>
+            					<p>{{ relatedQuizData.intro }}</p>
+            				</div>
+            				<div class="related-quizes__item__sample-question-answers">
+            					<h5>{{ relatedQuizData.title }}</h5>
+								<ul ng-repeat="">
+									<li>{{ quizData.questionAndAnswers }}</li>
+								</ul>
+            				</div>
+            			</div>
+            		</div>
+            	</div>
             </div>
         </section>
-        <section class="row">
-            <div class="row-content">
-                <div class="col-sm-8">
-                    <div class="campaign-intro">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie magna sit amet velit varius fringilla. Quisque eros quam, vestibulum nec nisi vitae, facilisis elementum leo. Vestibulum vel volutpat ipsum. Nullam nisl mi, facilisis ac finibus eget, faucibus vitae mi.</p>
-                    </div>
-                    <div class="campaign-details">
-                        <div class="text-block">
-                            <h3>About this campaign</h3> 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie magna sit amet velit varius fringilla. Quisque eros quam, vestibulum nec nisi vitae, facilisis elementum leo. Vestibulum vel volutpat ipsum. Nullam nisl mi, facilisis ac finibus eget, faucibus vitae mi. Sed molestie scelerisque rutrum. Ut malesuada, nulla ut iaculis finibus, ipsum libero facilisis felis, quis auctor lectus diam in elit. Pellentesque gravida viverra posuere. Praesent in metus eros. Maecenas tincidunt sit amet sapien eget tincidunt. Proin dignissim sapien vel sapien lacinia cursus. Nulla eu sollicitudin elit.</p>
-                            <p>Nulla facilisi. Nunc porttitor justo non vestibulum tristique. Vestibulum a suscipit elit, eu hendrerit odio. Duis lacinia purus mi, nec aliquam dolor malesuada sit amet. Nunc justo sapien, blandit vitae elit a, pulvinar porttitor nulla. Mauris cursus felis faucibus, rhoncus ipsum at, aliquet eros. Donec vitae libero enim. Morbi gravida ligula dui, molestie mollis tortor congue dapibus. Duis in sagittis ante. Aliquam quis felis metus. Curabitur gravida rhoncus tellus, vel blandit mi eleifend eu. Donec mauris est, vestibulum quis pharetra a, ornare ut velit. Ut sollicitudin ornare odio sed pharetra. Donec bibendum laoreet metus, at fringilla lorem pulvinar eu. Morbi non rhoncus neque, in cursus quam. Suspendisse magna leo, tempor vel metus vel, placerat scelerisque ligula.</p>
-                        </div>
-                        <div class="image-block">
-                            <img src="http://lorempixel.com/640/400/abstract/3/" alt="image-block" />
-                        </div>
-                        <div class="image-block">
-                            <img src="http://lorempixel.com/640/400/abstract/5/" alt="image-block" />
-                        </div>
-                        <div class="text-block">
-                            <h3>Other details about this campaign</h3> 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie magna sit amet velit varius fringilla. Quisque eros quam, vestibulum nec nisi vitae, facilisis elementum leo. Vestibulum vel volutpat ipsum. Nullam nisl mi, facilisis ac finibus eget, faucibus vitae mi. Sed molestie scelerisque rutrum. Ut malesuada, nulla ut iaculis finibus, ipsum libero facilisis felis, quis auctor lectus diam in elit. Pellentesque gravida viverra posuere. Praesent in metus eros. Maecenas tincidunt sit amet sapien eget tincidunt. Proin dignissim sapien vel sapien lacinia cursus. Nulla eu sollicitudin elit.</p>
-                            <p>Nulla facilisi. Nunc porttitor justo non vestibulum tristique. Vestibulum a suscipit elit, eu hendrerit odio. Duis lacinia purus mi, nec aliquam dolor malesuada sit amet. Nunc justo sapien, blandit vitae elit a, pulvinar porttitor nulla. Mauris cursus felis faucibus, rhoncus ipsum at, aliquet eros. Donec vitae libero enim. Morbi gravida ligula dui, molestie mollis tortor congue dapibus. Duis in sagittis ante. Aliquam quis felis metus. Curabitur gravida rhoncus tellus, vel blandit mi eleifend eu. Donec mauris est, vestibulum quis pharetra a, ornare ut velit. Ut sollicitudin ornare odio sed pharetra. Donec bibendum laoreet metus, at fringilla lorem pulvinar eu. Morbi non rhoncus neque, in cursus quam. Suspendisse magna leo, tempor vel metus vel, placerat scelerisque ligula.</p>
-                        </div>
-                        <div class="image-block">
-                            <img src="http://lorempixel.com/640/400/abstract/6/" alt="image-block" />
-                        </div>
-                        <div class="image-block">
-                            <img src="http://lorempixel.com/640/400/abstract/7/" alt="image-block" />
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="col-sm-4">
-                     <div class="quick-pay">
-                       <h4>I would like to support this campaign with the amount of</h4>
-                        <ul>
-                            <li>
-                                <input type="checkbox" class="donate1" />
-                                <label for="donate1">£30</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" class="donate2" />
-                                <label for="donate2">£20</label>
-                            </li>
-                            <li>
-                                <input type="checkbox" class="donate3" />
-                                <label for="donate3">£10</label>
-                            </li>
-                            <li>
-                                <p>Other Amounts(£)</p>
-                                <input type="text" class="donate-amount" /> 
-                            </li>
-                        </ul>
-                       <button class="donate-submit">Donate</button>
-                    </div>
-                    <div class="donor-info">
-                        <h4>Recent Donors</h4>
-                        <ul>
-                            <li>                            
-                                <h2>£50</h2>
-                                <p><span>Bradley</span></p>
-                                <p class="don-date">1 Dec</p>
-                                <p class="don-note">Lorem ipsum dolor sit amet, eum ad nostro scripta disputando.</p>
-                            </li>
-                            <li>                            
-                                <h2>£30</h2>
-                                <p><span>Mitraa</span></p>
-                                <p class="don-date">30 Nov</p>
-                                <p class="don-note">Nam vitae blandit albucius ne, movet solet vocibus id his.</p>
-                            </li>
-                            <li>                            
-                                <h2>£75</h2>
-                                <p><span>Aberdeen</span></p>
-                                <p class="don-date">29 Nov</p>
-                                <p class="don-note">Nam vitae blandit albucius ne, movet solet vocibus id his.</p>
-                            </li>
-                            <li>                            
-                                <h2>£40</h2>
-                                <p><span>Dwayne</span></p>
-                                <p class="don-date">27 Nov</p>
-                                <p class="don-note">Nam vitae blandit albucius ne, movet solet vocibus id his.</p>
-                            </li>
-                            <li>                            
-                                <h2>£75</h2>
-                                <p><span>Fernandopulle</span></p>
-                                <p class="don-date">26 Nov</p>
-                                <p class="don-note">Nam vitae blandit albucius ne, movet solet vocibus id his.</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <footer class="row">
+        	<div class="row__content">
+        		<div class="col-sm-12">
+        			
+        		</div>
+        	</div>
+        </footer>
     </body>
 </html>

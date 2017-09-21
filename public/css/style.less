@@ -26,8 +26,9 @@
 		8.1 DEVICE WIDTH UPTO 640
 		8.2 DEVICE WIDTH FROM 641
 		8.3 DEVICE WIDTH FROM 768
-		8.4 DEVICE WIDTH FROM 960
-		8.5 RETINA DISPLAY
+		8.4 DEVICE WIDTH FROM 992
+		8.5 DEVICE WIDTH FROM 1224
+		8.6 RETINA DISPLAY
 */
 
 
@@ -381,17 +382,26 @@
             font-style: normal;
 
         }
-        @font-face {
-            font-family: 'museo_sans500';
-            src: url('/fonts/museosans-500-webfont.eot');
-            src: url('/fonts/museosans-500-webfont.eot?#iefix') format('embedded-opentype'),
-                 url('/fonts/museosans-500-webfont.woff') format('woff'),
-                 url('/fonts/museosans-500-webfont.ttf') format('truetype'),
-                 url('/fonts/museosans-500-webfont.svg#museo_sans500') format('svg');
-            font-weight: normal;
-            font-style: normal;
-
-        }
+		@font-face {
+			font-family: 'Merriweather';
+			src: url('/fonts/Merriweather-Regular.eot');
+			src: url('/fonts/Merriweather-Regular.eot?#iefix') format('embedded-opentype'),
+				url('/fonts/Merriweather-Regular.woff') format('woff'),
+				url('/fonts/Merriweather-Regular.ttf') format('truetype'),
+				url('/fonts/Merriweather-Regular.svg#Merriweather-Regular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'Comfortaa';
+			src: url('/fonts/Comfortaa-Regular.eot');
+			src: url('/fonts/Comfortaa-Regular.eot?#iefix') format('embedded-opentype'),
+				url('/fonts/Comfortaa-Regular.woff') format('woff'),
+				url('/fonts/Comfortaa-Regular.ttf') format('truetype'),
+				url('/fonts/Comfortaa-Regular.svg#Comfortaa-Regular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
 
 	/*	7.2 ----------------------------------------------
 		TYPOGRAPHY
@@ -425,12 +435,10 @@
 			line-height: 1.2;
 		}
 		
-		h1, h2, h3, h4, h5, h6 { 
-		}
 		h1, h2, h3, h4, h5, h6 {
 			font-weight: normal;
 			line-height: 1.2;
-			font-family: 'open_sanssemibold', Arial, verdana;
+			font-family: 'Merriweather', open_sanssemibold, verdana;
 			color: #000;
 		}
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { 
@@ -489,7 +497,7 @@
             margin-left: 0;
             margin-right: 0;
             
-            &.row-one {
+            &.row__one {
                 margin-top: 70px;
             }
             .row {
@@ -501,8 +509,11 @@
             overflow: hidden;
         }    
         body{
-            background: #f1f1e9;
+            background: @white;
             color: @copyColor;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			text-rendering: optimizeLegibility;
             
             &.checkout {
                 background: @white;
@@ -542,6 +553,9 @@
                 a:hover{
                     color: @brandColor;
                 }
+				ul {
+					display: none;
+				}
             }
         }
         .camp-button{
@@ -556,8 +570,8 @@
             padding: 20px;
             text-transform: uppercase;
         }
-        .hero-container{
-            background: url("/images/home-hero.jpg") no-repeat;
+        .hero__image{
+            background: url("/images/hero-fallback.jpg") no-repeat;
             background-size: cover;
             overflow: hidden;
             width: 100%;
@@ -589,15 +603,30 @@
             }
 
         }
-        .row-content{
+        .row__content{
             overflow: hidden;
             max-width: 1024px;
             margin: 0 auto;
+			
+			&--quiz {
+				max-width: 640px;
+			}
         }
         h2{
             color: @copyColor;
             font-size: 26px;
             line-height: 30px;
+            font-family: 'open_sansregular';
+            margin-bottom: 15px;
+        }
+		ol {
+			padding-left: 25px;
+			font-size: 20px;
+			color: @copyColor;
+		}
+        h3{
+            font-size: 22px;
+            line-height: 28px;
             font-family: 'open_sansregular';
             margin-bottom: 15px;
         }
@@ -668,7 +697,6 @@
             }
         }        
         .title-area {
-            text-align: center;
             color: @copyColor;
             .margin(10,0,20,0);
         }
@@ -1123,20 +1151,23 @@
         }
 
     /*	8.4 ----------------------------------------------
-		DEVICE WIDTH FROM 960
+		DEVICE WIDTH FROM 992
 		-------------------------------------------------- */
 		
-        @media only screen and (min-width: 960px) {
+        @media only screen and (min-width: 992px) {
             
         }
 
-	/*	8.5 ----------------------------------------------
+    /*	8.5 ----------------------------------------------
+		DEVICE WIDTH FROM 1224
+		-------------------------------------------------- */
+		
+        @media only screen and (min-width: 1224px) {
+            
+        }
+
+	/*	8.6 ----------------------------------------------
 		RETINA DISPLAY
 		-------------------------------------------------- */
 		@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-			.header-container .logo {
-				background:url(../_images/logo-large.png) no-repeat top left;
-				background-size: 218px 25px;
-				background-size: 21.8rem 2.5rem;
-			}
 		} 
