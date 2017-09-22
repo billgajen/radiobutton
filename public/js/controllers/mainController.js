@@ -23,6 +23,7 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
 	$scope.questions = [{questionName: 'Type question 1 here'}];
     $scope.startQuizData = {
 		'title':'',
+		'intro':'',
 		'category':'',
 		'questionAndAnswers': $scope.questions
 	};
@@ -49,7 +50,7 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
 	
     //Get Quiz data
     $scope.quizData = '';
-    $scope.qStringGPQ = $location.search()['gpQ'];
+    $scope.qStringGPQ = $location.search().gpQ;
     $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
     	$scope.quizData = data;

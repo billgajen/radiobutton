@@ -9,7 +9,9 @@
        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
        <script type="text/javascript" src="/js/app.js"></script>
        <script type="text/javascript" src="/js/controllers/mainController.js"></script>
+       <script type="text/javascript" src="/js/main.min.js"></script>
        <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css">
+       <link rel="stylesheet" type="text/css" href="/css/font-icons.css">
        <link rel="stylesheet" type="text/css" href="/css/style.css">
        <title>Campaign Page</title>
     </head>
@@ -54,23 +56,23 @@
             <div class="row__content row__content--quiz">
             	<div class="col-sm-12">
             		<div class="question-answers">
-						<ol>
+						<ul>
 							<li class="question-answers__item" ng-repeat="questions in quizData.questionAndAnswers">
 								<div class="question-answers__item__wrapper">
 									<div class="question-answers__item__question">
 										<h3>{{ questions.questionName }}</h3>
 									</div>
 									<div class="question-answers__item__answers">
-										<ul>
-											<li>{{questions.answerOne}}</li>
-											<li>{{questions.answerTwo}}</li>
-											<li>{{questions.answerThree}}</li>
-											<li>{{questions.answerFour}}</li>
+										<ul class="row">
+											<li class="col-sm-6"><p>{{questions.answerOne}}</p></li>
+											<li class="col-sm-6"><p>{{questions.answerTwo}}</p></li>
+											<li class="col-sm-6"><p>{{questions.answerThree}}</p></li>
+											<li class="col-sm-6"><p>{{questions.answerFour}}</p></li>
 										</ul>
 									</div>
 								</div>
 							</li>
-						</ol>
+						</ul>
             		</div>
             	</div>
              	<div class="col-sm-12">
@@ -85,7 +87,7 @@
             				</div>
             				<div class="related-quizes__item__sample-question-answers">
             					<h5>{{ relatedQuizData.title }}</h5>
-								<ul ng-repeat="">
+								<ul>
 									<li>{{ quizData.questionAndAnswers }}</li>
 								</ul>
             				</div>

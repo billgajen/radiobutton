@@ -262,7 +262,7 @@
 		.padding(0,0,0,15);
 	}
 	ul ul {
-		list-style: circle outside; 
+		list-style: none; 
 	}
 	ol ol {
 		list-style: lower-roman; 
@@ -497,8 +497,8 @@
             margin-left: 0;
             margin-right: 0;
             
-            &.row__one {
-                margin-top: 70px;
+            &.row--one {
+                margin-top: 55px;
             }
             .row {
 				margin-left:-10px;
@@ -509,7 +509,7 @@
             overflow: hidden;
         }    
         body{
-            background: @white;
+            background: #f3f9ef;
             color: @copyColor;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
@@ -577,7 +577,7 @@
             width: 100%;
             height: 450px;
             text-align: center;
-            margin: 55px 0 20px 0;
+            margin-bottom:20px;
             
             
             h1{
@@ -619,389 +619,65 @@
             font-family: 'open_sansregular';
             margin-bottom: 15px;
         }
-		ol {
-			padding-left: 25px;
-			font-size: 20px;
-			color: @copyColor;
-		}
         h3{
             font-size: 22px;
             line-height: 28px;
             font-family: 'open_sansregular';
             margin-bottom: 15px;
         }
-        .campaign-list {
-            overflow: hidden;
-            
-            ul {
-                li {
-                    .campaign-list-item {
-                        margin-bottom: 20px;
-                        background: @white;
-                        .border-radius(4,4,4,4);
-                        overflow: hidden;
-                        height: 418px;
-                        
-                        img {
-                            .border-radius(4,0,0,4);
-                        }
-                        
-                        &-info {
-                            .padding(15,15,15,15);
-                            overflow: hidden;
-                            
-                            h3 {
-                                padding-top: 0;
-                            }
-                            a.button {
-                                color: @white;
-                                text-transform: uppercase;
-                                background: @brandColor;
-                                .padding(5,20,5,20);
-                                font-size: 12px;
-                                font-family: 'open_sanssemibold';
-                                float: right;
-                                .border-radius(2,2,2,2);
-                                display: none;
-                            }
-                        }
-                    }
-                    &:hover {
-                        .campaign-list-item {
-                            &-info {
-                                a.button {
-                                    display: block;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .camapign-image {
-            background: @white;
-            margin-bottom: 15px;
-        }
-        .share-option {
-            overflow: hidden;
-            margin-bottom: 25px;
-            
-            ul {
-                overflow: hidden;
-                float: right;
-                
-                li {
-                    float: left;
-                    padding: 0 5px;
-                }
-            }
-        }        
         .title-area {
             color: @copyColor;
             .margin(10,0,20,0);
         }
-        .white-pod {
-            background: @white;
-            .padding(10,15,10,15);
-            border: 1px solid rgba(96,107,112,.1);
-            .border-radius(4,4,4,4);
-            overflow: hidden;
-        }
-        .grey-pod {
-            background: #f6f6f1;
-            .padding(25,30,25,30);
-            .border-radius(5,5,5,5);
-            overflow: hidden;
-            margin-bottom: 40px;
-            
-            p {
-                font-size: 16px;
-                line-height: 20px;
-                color: @copyColorLight
-            }
-        }
-        .campaign-stats { 
-            
-            h2 {
-                color: @copyColor; 
-                text-align: right;
-                font-size: 38px;
-                line-height: 42px;
-                padding-top: 10px;
-                border-bottom: 1px solid @lightBorder;
-                margin-bottom: 10px;
-                
-                span {
-                    color: @copyColor; 
-                    display: block;
-                    font-family: 'open_sansregular';
-                    font-size: 14px;
-                    line-height: 16px;
-                    .margin(2,0,10,0);
-                    
-                    strong {
-                        font-size: 18px;
-                    }
-                }
-            }
-            a.button {
-                background: @brandColor;
-                width: 100%;
-                padding: 15px;
-                border-radius: 4px;
-                color: @white;
-                display: block;
-                text-align: center;
-                font-family: 'open_sanssemibold';
-                font-size: 16px;
-            }
-        }
-        .campaign-intro {
-            font-size: 18px;
-            line-height: 22px;
-            margin-bottom: 25px;
-            color: @black;
-        }
-        .campaign-details {
-            overflow: hidden;
-            
-            .text-block, .image-block {
-                margin-bottom: 15px;
-            }
-        }
-        .donor-info {
-            overflow: hidden;
-            background: @white;
-            border: 1px solid rgba(96,107,112,.1);    
-            border-radius: 4px;
-            padding: 10px 15px;
-            
-            h4 {
-                font-size: 18px;
-                color: @copyColor;
-                border-bottom: 1px solid rgba(96,107,112,.1);
-            }
-            ul {
-                overflow: hidden;
-                
-                li {
-                    overflow: hidden;
-                    border-bottom: 1px solid rgba(96,107,112,.1);
-                    
-                                h2 {
-                                    text-align: left;
-                                    padding: 2px;
-                                }
+		.question-answers__item__answers {
+			ul {
+				padding-left: 0;
+				display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+				display: -ms-flexbox;  /* TWEENER - IE 10 */
+				display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+				display: flex;
+				-webkit-flex-wrap: wrap; /* Safari 6.1+ */
+				flex-wrap: wrap;
 
-                                span{
-                                    font-weight: bold;
-                                }
-
-                                .don-date{
-                                    font-style: italic;
-                                    font-size: 12px;
-                                }
-                    }
-                }  
-        }
-        .campaigner-details {
-            .donor-info;
-            
-            margin-top: 15px;
-            
-            span {
-                font-weight: bold;
-                font-size: 16px;    
-            }
-        }
-        .quick-pay {
-            .donor-info;
-            margin-bottom: 15px;
-            
-            h4{
-                margin-bottom: 5px;
-            }
-            
-            li {
-                float: left;
-                padding: 5px;
-                background: @brandColor;
-                margin-right: 10px;
-                color: @white;
-                width: 50px;
-                font-size: 23px;
-                overflow: hidden;
-                border-radius: 4px;
-                
-                &:last-child {
-                    width: 98px;
-                }
-                
-                p {
-                    padding: 2px;
-                    font-size: 10px;
-                }
-            
-                
-                .donate-amount {
-                    width: 75px;
-                }
-            }
-            
-            .donate-submit {
-                border: none;
-                background: @brandColor;
-                color: @white;
-                padding: 5px;
-                float: right;
-            }
-        }
-        .campaign-teaser {
-            font-size: 12px;
-            line-height: 16px;
-            
-            &-image {
-                .margin(-10,-15,15,-15);
-            }
-            &-details {
-                h1 {
-                    font-family: 'open_sansregular';
-                    font-size: 22px;
-                    line-height: 26px;
-                    color: @copyColor;
-                }
-                p {
-                    line-height: 16px;
-                }
-            }
-            .campainer {
-                margin-bottom: 15px;
-                overflow: hidden;
-                
-                img {
-                    max-width: 50px;
-                    float: left;
-                    margin-right: 15px;
-                }
-            }
-            .date {
-                clear: both;
-                
-            }
-        }
-        .pop-up-header {
-                overflow: hidden;
-                margin-bottom: 10px;
-
-            h4{
-                text-align: center;
-                color: @copyColor;
-            }
-
-            p{
-                text-align: center;
-                color: @copyColor;
-                font-size: 14px;
-
-            }
-
-        }
-        .signup-content {
-            overflow: hidden;
-            text-align: center;
-            padding: 15px;
-            border-bottom: 1px solid rgba(96,107,112,.1);
-
-            .fb-button {
-                color: #FFFFFF;
-                padding: 20px 80px 20px 80px;
-                margin: 20px 20px 0px 0px;
-                border-radius: 4px;
-                display: inline-block;
-                font-family: 'open_sanssemibold';
-                margin-top: 20px;
-                font-size: 12px;
-                line-height: 1;
-                background: #3b5998;
-                text-transform: uppercase;
-            }
-
-            .gplus-button {
-                .fb-button;
-                background: #d34836;
-            }
-
-            .email-button {
-                .fb-button;
-                background: rgba(96,107,112,.6);
-            }
-        }
-        .pop-up-footer {
-            overflow: hodden;
-            text-align: center;
-            font-size: 14px;
-            padding: 15px;
-            background: #eaeae1;
-            
-            a:hover {
-                color: @brandColor;
-            }
-            
-            span{
-                text-transform: uppercase;
-                font-weight: bolder;
-                color: @copyColor;
-                font-size: 16px;
-            }
-            
-            .sign-up-button {
-                color: #FFFFFF;
-                padding: 20px 80px 20px 80px;
-                margin: 20px 20px 0px 0px;
-                border-radius: 4px;
-                display: inline-block;
-                font-family: 'open_sanssemibold';
-                margin-top: 20px;
-                font-size: 12px;
-                line-height: 1;
-                background: @brandColor;
-                text-transform: uppercase;
-
-            }
-        }
-        .social-button {
-            color: @white;
-            .padding(20,80,20,80);
-            .margin(20,20,0,0);
-            border-radius: 4px;
-            display: inline-block;
-            font-family: 'open_sanssemibold';
-            margin-top: 20px;
-            font-size: 12px;
-            line-height: 1;
-
-            &.facebook {
-                background: #3b5998;
-            }
-            &.google {
-                background: #d34836;
-            }
-        }
-        .checkout-with-email {
-            .padding(25,30,25,30);
-            
-            h2 {
-                span {
-                    float: right;
-                    font-size: 16px;
-                    color: @copyColorLight;
-                    
-                    a {
-                        color: @brandColor;
-                    }
-                }
-            }
-        }
+				li {
+					margin-bottom: 20px;
+					
+					p {
+						padding: 10px 10px 10px 40px;
+						border: 1px solid #ffbab2;
+						background: rgba(235,92, 74, 0.1);
+						border-radius: 8px;
+						cursor: pointer;
+						font-size: 16px;
+						line-height: 19px;
+						position: relative;
+						
+						&:before {
+							position: absolute;
+							content: '\61';
+							font-family: 'radiobutton';
+							left: 10px;
+							top: 10px;
+							font-size: 22px;
+							line-height: 22px;
+							color: @brandColor;
+						}
+					}
+					&:hover {
+						p {
+							background: rgba(235,92, 74, 0.15);
+						}
+					}
+					&.selected {
+						p {
+							&:before {
+								content: '\62';
+							}
+						}
+					}
+				}
+			}
+		}
         .form-group {
             input, select {
                 border: 1px solid #ebebeb;
@@ -1017,89 +693,6 @@
             }
             input[type="radio"] {
                 width: auto;
-            }
-        }
-        .donor-details {
-            .padding(25,30,25,30);
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .pay-with-paypal {
-            clear: both;
-            
-            h3 {
-                .margin(-25,-30,25,-30);
-                .padding(20,20,20,20);
-                border-bottom: 1px solid @brandColor;
-                font-family: 'open_sanssemibold';
-                text-align: center;
-                font-size: 16px;
-            }
-            .paypal-button img {
-                width: 150px;
-                margin:  20px auto;
-            }
-        }
-        .donation-amount {
-            margin-bottom: 40px;
-            .padding(0,30,25,30);
-            overflow: hidden;
-            
-            .ticket-value {
-                font-size: 30px;
-                line-height: 32px;
-            }
-            .row {
-                margin-bottom: 20px;
-                
-                input[type="radio"] {
-                    float: left;
-                }
-                span{
-                    margin-left: 20px;
-                }
-                .currency {
-                    
-                }
-            }
-            .donation-value {
-                position: relative;
-                
-                input[type="text"] {
-                    border: none;
-                    border-bottom:  1px solid #ebebeb;
-                    border-radius: 0;
-                    font-size: 80px;
-                    text-align: right;
-                    .padding(0,110,0,55);
-                    color: @brandColor;
-                }
-                &:after {
-                    position: absolute;
-                    right: 0;
-                    bottom: 6px;
-                    font-size: 80px;
-                    content: '.00';
-                    color: @brandColor;
-                }
-                .currency {
-                    position: absolute;
-                    left: 0;
-                    bottom: 6px;
-                    font-size: 50px;
-                    margin: 0;
-                }
-            }
-        }
-        .email-sign-up {
-            overflow: hidden;
-            
-            input {
-                background: 0;
-                font-size: 20px;
-                color: @copyColor;
-                border-bottom: 2px solid rgba(96,107,112,.2);
-                margin-bottom: 10px;
             }
         }
         footer {

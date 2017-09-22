@@ -23,6 +23,7 @@ var Schema = mongoose.Schema;
 // Create a Schema
 var quizSchema = new Schema({
     title: String,
+    intro: String,
     category: String,
     questionAndAnswers: [
         {
@@ -50,6 +51,7 @@ var Quiz = mongoose.model('Quiz', quizSchema);
 app.post('/api/postQuiz', function(req, res) {
     Quiz.create({
         title: req.body.title,
+        intro: req.body.intro,
         category : req.body.category,
         questionAndAnswers : req.body.questionAndAnswers,
         done : false
