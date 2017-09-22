@@ -5,6 +5,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
+//Mongoose Promise
+mongoose.Promise = Promise;
 //Database connection
 mongoose.connect('mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
 
@@ -41,7 +43,7 @@ var quizSchema = new Schema({
 
 //Routes
 app.get('/startCampaign', function(req, res){
-        res.sendFile(__dirname + '/public/views/start-campaign.html');
+	res.sendFile(__dirname + '/public/views/start-campaign.html');
 });
 
 app.get('/viewQuiz', function(req, res){
@@ -63,11 +65,9 @@ app.post('/api/postQuiz', function(req, res) {
 //Get data
 var ObjectId = require('mongodb').ObjectID;
 
-app.get('/api/getQuizData', function(req, res){
-    
-    var quizId = req.query.gpQ;
-    console.log(quizId);
-    Quiz.find({_id:ObjectId("59b2ac3cfc2283480879025c")}, function(err, quiz) {
+app.get('/api/getQuizData/:qId', function(req, res){
+	console.log(req);
+	Quiz.find({_id:ObjectId(req.params.qId)}, function(err, quiz) {
 	  if (err) throw err;
 
 	  // object of the user
