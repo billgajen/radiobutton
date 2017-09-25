@@ -28,12 +28,26 @@ var quizSchema = new Schema({
     questionAndAnswers: [
         {
             questionName: String,
-            answerOne: String,
-            answerTwo: String,
-            answerThree: String,
-            answerFour: String
+            answerOne: {
+				value: String,
+				isCorrect: String
+			},
+            answerTwo: {
+				value: String,
+				isCorrect: String
+			},
+            answerThree: {
+				value: String,
+				isCorrect: String
+			},
+            answerFour: {
+				value: String,
+				isCorrect: String
+			}
         }
     ]
+}, {
+    timestamps: true
 });
 
 //Routes

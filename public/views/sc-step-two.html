@@ -28,10 +28,10 @@
                 <div class="form-group" data-ng-repeat="question in questions">
                     <label for="quiz_question_1">Question</label>
                     <input type="text" ng-model="question.questionName">
-                    <input type="text" ng-model="question.answerOne">
-                    <input type="text" ng-model="question.answerTwo">
-                    <input type="text" ng-model="question.answerThree">
-                    <input type="text" ng-model="question.answerFour">
+                    <input type="text" ng-model="question.answerOne.value">
+                    <input type="text" ng-model="question.answerTwo.value">
+                    <input type="text" ng-model="question.answerThree.value">
+                    <input type="text" ng-model="question.answerFour.value">
                 </div>
                 <button class="addfields" ng-click="addNewQuestion()">Add New Question</button>
                
