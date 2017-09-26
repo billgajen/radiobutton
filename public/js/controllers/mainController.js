@@ -98,4 +98,5 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
     .catch(function(errRes) {
       // Handle errRess
     });
+	
 }]);
