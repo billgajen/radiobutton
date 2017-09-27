@@ -41,33 +41,39 @@
                 <button class="camp-button">Create a Quiz</button>
            </div>
         </header>
+<!--
         <section class="row row--one hero">
 			<div class="hero__image" style='background: url("/images/home-hero.jpg") no-repeat;'></div>
         </section>    
+-->
         <section class="row title-area">
-            <div class="row__content row__content--quiz">
-                <div class="col-sm-12">
+            <div class="row__content row__content--title">
+                <img src="/images/home-hero.jpg" alt="Hero" />
+                <div class="col-sm-12">                    
                     <h1>{{ quizData.title }}</h1>
-                    <p>{{quizData.intro}}</p>
+                    <h2>{{quizData.intro}}</h2>
+                    <div class="title-area__footer">
+                        <button>Shall we begin?</button>
+                    </div>                   
                 </div>
             </div>
         </section>    
-        <section class="row content-area">
+        <section class="row quiz-area ">
             <div class="row__content row__content--quiz">
             	<div class="col-sm-12">
             		<div class="question-answers">
 						<ul>
-							<li class="question-answers__item" ng-repeat="questions in quizData.questionAndAnswers">
+							<li class="question-answers__item" ng-repeat="questions in quizData.questionAndAnswers" elem-height>
 								<div class="question-answers__item__wrapper">
 									<div class="question-answers__item__question">
 										<h3>{{ questions.questionName }}</h3>
 									</div>
 									<div class="question-answers__item__answers">
 										<ul class="row">
-											<li class="col-sm-6"><p>{{questions.answerOne}}</p></li>
-											<li class="col-sm-6"><p>{{questions.answerTwo}}</p></li>
-											<li class="col-sm-6"><p>{{questions.answerThree}}</p></li>
-											<li class="col-sm-6"><p>{{questions.answerFour}}</p></li>
+											<li class="col-sm-6" data-answer-item-id="{{questions.answerOne.isCorrect}}"><p>{{questions.answerOne.value}}</p></li>
+											<li class="col-sm-6" data-answer-item-id="{{questions.answerTwo.isCorrect}}"><p>{{questions.answerTwo.value}}</p></li>
+											<li class="col-sm-6" data-answer-item-id="{{questions.answerThree.isCorrect}}"><p>{{questions.answerThree.value}}</p></li>
+											<li class="col-sm-6" data-answer-item-id="{{questions.answerFour.isCorrect}}"><p>{{questions.answerFour.value}}</p></li>
 										</ul>
 									</div>
 								</div>

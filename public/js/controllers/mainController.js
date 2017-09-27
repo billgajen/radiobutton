@@ -20,7 +20,27 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
     };
     
     // Create Quiz
-	$scope.questions = [{questionName: 'Type question 1 here'}];
+	$scope.questions = [
+		{
+			questionName: 'Type question 1 here',
+            answerOne: {
+				value: '',
+                isCorrect: '25092017735',
+            },
+            answerTwo: {
+				value: '',
+                isCorrect: '25092017400',
+            },
+            answerThree: {
+				value: '',
+                isCorrect: '25092017401',
+            },
+            answerFour: {
+				value: '',
+                isCorrect: '25092017403',
+            }
+ 		}
+	];
     $scope.startQuizData = {
 		'title':'',
 		'intro':'',
@@ -30,7 +50,27 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
 
 	$scope.addNewQuestion = function() {
 		var newItemNo = $scope.questions.length+1;
-		$scope.questions.push({'questionName':'Type question '+newItemNo+ ' here'});
+		$scope.questions.push(
+			{
+				'questionName':'Type question '+newItemNo+ ' here',
+				'answerOne': {
+					'value': '',
+					'isCorrect': '25092017735',
+				},
+				'answerTwo': {
+					'value': '',
+					'isCorrect': '25092017402',
+				},
+				'answerThree': {
+					'value': '',
+					'isCorrect': '25092017405',
+				},
+				'answerFour': {
+					'value': '',
+					'isCorrect': '25092017406',
+				}
+			}
+		);
 	};
 	$scope.removeLastQuestion = function() {
 		var lastItem = $scope.questions.length-1;
@@ -58,4 +98,23 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
     .catch(function(errRes) {
       // Handle errRess
     });
+	
 }]);
+
+appTitan.directive('elemHeight', function($timeout){
+    return{
+        restrict:'A',
+        link: function(scope, element, attrs){
+            //scope.height = elem[0].offsetHeight;
+            //$timeout(function(){
+                //console.log(element.offsetHeight);
+                //element.css({
+                //    height: element.offsetHeight,
+                //});
+            //});
+            scope.$watch(element.offsetHeight, function(newValue, oldValue) {
+                console.log(newValue);
+            }, true);
+        }
+    };
+});

@@ -175,7 +175,7 @@
 	@black: #000000;
 	@white: #FFFFFF;
     @brandColor: #eb5c4a;
-    @copyColor: #606b70;
+    @copyColor: #4a4a4a;
     @copyColorLight: #9E9E9E;
 	@lightBorder: #dddddd;
 
@@ -439,7 +439,7 @@
 			font-weight: normal;
 			line-height: 1.2;
 			font-family: 'Merriweather', open_sanssemibold, verdana;
-			color: #000;
+			color: @copyColor;
 		}
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { 
 			font-weight: inherit; 
@@ -521,6 +521,7 @@
         }
         .header-container{
             overflow: hidden;
+            max-height: 55px;
             background: @white;
             position: fixed;
             width: 100%;
@@ -608,6 +609,9 @@
             max-width: 1024px;
             margin: 0 auto;
 			
+			&--title {
+				max-width: 768px;
+			}
 			&--quiz {
 				max-width: 640px;
 			}
@@ -627,7 +631,46 @@
         }
         .title-area {
             color: @copyColor;
-            .margin(10,0,20,0);
+            position: absolute;
+            width: 100%;
+            left: 0;
+            
+            img {
+                margin-bottom: 30px;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 18px;
+                line-height: 26px;
+                text-align: center;
+                color: #676767;
+                margin-bottom: 30px;
+            }
+            .title-area__footer {
+                text-align: center;
+                
+                button {
+                    background: #89bc62;
+                    border: none;
+                    font-size: 18px;
+                    font-family: 'Merriweather';
+                    padding: 10px 40px;
+                    border-radius: 3px;
+                    color: #171717;
+                    box-shadow: 0 3px 12px 0 rgba(0,0,0,0.1);
+                    
+                    &:hover {
+                        background: #a0d479;
+                    }
+                }
+            }
+        }
+        .quiz-area {
+            display: none;
+            transition: all 0.2s ease-out;
         }
 		.question-answers__item__answers {
 			ul {

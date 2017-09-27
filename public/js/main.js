@@ -26,7 +26,35 @@ $(function(){
 				$('.question-answers__item__answers ul li', selectionParent).removeClass('selected');
 				$(this).addClass('selected');
 			});
+            
+            // Quiz title area effects
+            $(window).bind('load', function() {
+                
+                var titleArea = $('.row.title-area');
+                var quizArea = $('.row.quiz-area');
 
+                var titleAreaHeight = titleArea.height(),
+                    viewportHeight = $(window).height(),
+                    middlePosition = (viewportHeight -titleAreaHeight)/2;
+                
+                titleArea.css('top', middlePosition);
+                quizArea.css('margin-top', viewportHeight);
+                
+                $('button', titleArea).on('click', function(e){
+                    e.preventDefault();
+                    $.when(titleArea.fadeOut(500), quizArea.show()).done(function() {
+                        quizArea.css('margin-top', middlePosition);
+                    });                
+                });
+            });
+            
+            //Position each question to middle
+            $('.question-answers__item').each(function(){
+                var questionHeight = $(this).outerHeight();
+                
+                $(this).css('height', questionHeight);
+            });
+ 
 			// Article share
 			$('.share a').not('.share .email a, .share .print a').click(function(){
 				window.open(this.href, 'Share', "width=600, height=600");

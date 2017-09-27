@@ -28,13 +28,33 @@ var quizSchema = new Schema({
     questionAndAnswers: [
         {
             questionName: String,
-            answerOne: String,
-            answerTwo: String,
-            answerThree: String,
-            answerFour: String
+            answerOne: {
+				value: String,
+				isCorrect: String
+			},
+            answerTwo: {
+				value: String,
+				isCorrect: String
+			},
+            answerThree: {
+				value: String,
+				isCorrect: String
+			},
+            answerFour: {
+				value: String,
+				isCorrect: String
+			}
         }
     ]
+}, {
+    timestamps: true
 });
+
+//Post data
+var Quiz = mongoose.model('Quiz', quizSchema);
+
+//Creating text index for search - Indexing the Entire Document
+Quiz.collection.createIndex({"$**":"text"});
 
 //Routes
 app.get('/startCampaign', function(req, res){
@@ -44,9 +64,6 @@ app.get('/startCampaign', function(req, res){
 app.get('/viewQuiz', function(req, res){
     res.sendFile(__dirname + '/public/views/campaign.html');
 });
-
-//Post data
-var Quiz = mongoose.model('Quiz', quizSchema);
 
 app.post('/api/postQuiz', function(req, res) {
     Quiz.create({
@@ -58,19 +75,40 @@ app.post('/api/postQuiz', function(req, res) {
     });
 });
 
-//Get data
+//Get quiz data
 var ObjectId = require('mongodb').ObjectID;
 
 app.get('/api/getQuizData/:qId', function(req, res){
-	console.log(req);
-	Quiz.find({_id:ObjectId(req.params.qId)}, function(err, quiz) {
-	  if (err) throw err;
 
-	  // Quiz objects
-	  res.json(quiz[0]);
+	Quiz.find({_id:ObjectId(req.params.qId)}, function(err, quiz) {
+		if (err) throw err;
+
+		// Quiz objects
+		res.json(quiz[0]);
 	});
 });
 
+//Get related quiz
+app.get('/api/getRelatedData/:category', function(req, res){
+
+	Quiz.find({category:req.params.category}).sort({createdAt: -1}).exec(function(err, quiz) {
+		if (err) throw err;
+
+		// All related quiz objects
+		res.json(quiz);
+	});
+});
+
+//Site Search
+app.get('/search/:keywords', function(req, res){
+
+	Quiz.find({"$text": {"$search": req.params.keywords}}, {score:{ $meta: "textScore" }}).sort({score:{$meta: "textScore"}}).exec(function(err, results) {
+		if (err) throw err;
+
+		// All related quiz objects
+		res.json(results);
+	});
+});
 
 app.listen(port);
 console.log('App listening on port' + port);
