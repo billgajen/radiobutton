@@ -15,7 +15,7 @@
        <link rel="stylesheet" type="text/css" href="/css/style.css">
        <title>Campaign Page</title>
     </head>
-    <body ng-app="appTitan" ng-controller="mainController">
+    <body ng-app="appTitan" ng-controller="MainController">
         <header>
            <div class="header-container">
                <div class="logo"><a href="#"><img src="/images/logo-qol.png" alt="logo"></a></div>
@@ -64,21 +64,12 @@
             		<div class="question-answers">
 						<ul>
 							<li class="question-answers__item" ng-repeat="questions in quizData.questionAndAnswers" elem-height>
-								<div class="question-answers__item__wrapper">
-									<div class="question-answers__item__question">
-										<h3>{{ questions.questionName }}</h3>
-									</div>
-									<div class="question-answers__item__answers">
-										<ul class="row">
-											<li class="col-sm-6" data-answer-item-id="{{questions.answerOne.isCorrect}}"><p>{{questions.answerOne.value}}</p></li>
-											<li class="col-sm-6" data-answer-item-id="{{questions.answerTwo.isCorrect}}"><p>{{questions.answerTwo.value}}</p></li>
-											<li class="col-sm-6" data-answer-item-id="{{questions.answerThree.isCorrect}}"><p>{{questions.answerThree.value}}</p></li>
-											<li class="col-sm-6" data-answer-item-id="{{questions.answerFour.isCorrect}}"><p>{{questions.answerFour.value}}</p></li>
-										</ul>
-									</div>
-								</div>
+								<questions-answers questions="questions" chosenAnswersArr="chosenAnswersArr"></questions-answers>
 							</li>
 						</ul>
+           				<div class="question-answers--submit">
+           					<button ng-click="showAnswers()">What's my scroe?</button>
+           				</div>
             		</div>
             	</div>
              	<div class="col-sm-12">

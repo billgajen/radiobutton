@@ -1,0 +1,21 @@
+<div class="question-answers__item__wrapper">
+	<div class="question-answers__item__question">
+		<h3>{{ questions.questionName }}</h3>
+	</div>
+	<div class="question-answers__item__answers">
+		<ul class="row">
+			<li class="col-sm-6" data-answer-item-id="{{questions.answerOne.isCorrect}}" ng-click="chosenAnswers(questions.answerOne.isCorrect)">
+				<p>{{questions.answerOne.value}}</p>
+			</li>
+			<li class="col-sm-6" data-answer-item-id="{{questions.answerTwo.isCorrect}}" ng-click="chosenAnswers(questions.answerTwo.isCorrect)">
+				<p>{{questions.answerTwo.value}}</p>
+			</li>
+			<li class="col-sm-6" data-answer-item-id="{{questions.answerThree.isCorrect}}" ng-click="chosenAnswers(questions.answerThree.isCorrect)">
+				<p>{{questions.answerThree.value}}</p>
+			</li>
+			<li class="col-sm-6" data-answer-item-id="{{questions.answerFour.isCorrect}}" ng-click="chosenAnswers(questions.answerFour.isCorrect)">
+				<p>{{questions.answerFour.value}}</p>
+			</li>
+		</ul>
+	</div>
+</div>

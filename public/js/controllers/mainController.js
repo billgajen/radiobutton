@@ -1,4 +1,4 @@
-appTitan.controller('mainController', ['$scope', '$http', '$location', function($scope, $http, $location){
+appTitan.controller('MainController', ['$scope', '$http', '$location', function($scope, $http, $location){
     // Signup form
     $scope.form = 'signup';
     
@@ -99,7 +99,33 @@ appTitan.controller('mainController', ['$scope', '$http', '$location', function(
       // Handle errRess
     });
 	
+	//Generate scores
+	$scope.chosenAnswersArr = [];
+	$scope.showAnswers = function() {
+		console.log($scope.chosenAnswersArr);
+	};
+	
+	
 }]);
+
+appTitan.directive('questionsAnswers', function() {
+	return {
+		restrict: 'E',
+		templateUrl: '/js/directives/questionsAnswers.html',
+		replace: true,
+		scope: {
+			questions: '=',
+			chosenAnswersArr: '='
+		},
+		link: function(scope) {
+			scope.chosenAnswers = function(selection) {
+				scope.chosenAnswersArr.push(selection);
+				console.log(scope.chosenAnswersArr);
+			};
+		}
+	};
+});
+
 
 appTitan.directive('elemHeight', function($timeout){
     return{
