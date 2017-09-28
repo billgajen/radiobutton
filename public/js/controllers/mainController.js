@@ -1,4 +1,6 @@
-appTitan.controller('MainController', ['$scope', '$http', '$location', function($scope, $http, $location){
+appTitan.controller('MainController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+    'use strict';
+    
     // Signup form
     $scope.form = 'signup';
     
@@ -78,8 +80,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	};
 
 	$scope.createQuiz = function(){
- 
-        $http.post('/api/postQuiz', $scope.startQuizData)
+         $http.post('/api/postQuiz', $scope.startQuizData)
             .success(function(data) {
                 console.log(data);
             })
@@ -115,13 +116,22 @@ appTitan.directive('questionsAnswers', function() {
 		replace: true,
 		scope: {
 			questions: '=',
-			chosenAnswersArr: '='
+			chosenAnswersArr: '=',
+            index: '='
 		},
 		link: function(scope) {
-			scope.chosenAnswers = function(selection) {
-				scope.chosenAnswersArr.push(selection);
-				console.log(scope.chosenAnswersArr);
-			};
+			scope.chosenAnswers = function(selection, index) {
+                var found = false;
+                for(var i=0; element=scope.chosenAnswersArr[i]; i++) {
+                    if(element.questionId == scope.index) {
+                        found = true;
+                        scope.chosenAnswersArr[i]= {questionId: scope.index, answerId: selection};
+                    }
+                }
+                if(found === false) {
+                    scope.chosenAnswersArr.push({questionId: scope.index, answerId: selection});
+                }
+ 			};
 		}
 	};
 });
