@@ -44,16 +44,16 @@ $(function(){
                     e.preventDefault();
                     $.when(titleArea.fadeOut(500), quizArea.show()).done(function() {
                         quizArea.css('margin-top', middlePosition);
-                    });                
+                    });
+                    $('.question-answers__item').each(function(){
+                        var questionHeight = $(this).height();
+
+                        $(this).css('height', questionHeight);
+                    });
                 });
             });
             
             //Position each question to middle
-            $('.question-answers__item').each(function(){
-                var questionHeight = $(this).outerHeight();
-                
-                $(this).css('height', questionHeight);
-            });
  
 			// Article share
 			$('.share a').not('.share .email a, .share .print a').click(function(){

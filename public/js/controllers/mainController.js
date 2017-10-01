@@ -109,7 +109,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	
 }]);
 
-appTitan.directive('questionsAnswers', function() {
+appTitan.directive('questionsAnswers', function($timeout) {
 	return {
 		restrict: 'E',
 		templateUrl: '/js/directives/questionsAnswers.html',
@@ -117,12 +117,13 @@ appTitan.directive('questionsAnswers', function() {
 		scope: {
 			questions: '=',
 			chosenAnswersArr: '=',
-            index: '='
+            index: '=',
+            height: '='
 		},
-		link: function(scope) {
+		link: function(scope, element, attrs) {
 			scope.chosenAnswers = function(selection, index) {
                 var found = false;
-                for(var i=0; element=scope.chosenAnswersArr[i]; i++) {
+                for(var i=0; !!(element=scope.chosenAnswersArr[i]); i++) {
                     if(element.questionId == scope.index) {
                         found = true;
                         scope.chosenAnswersArr[i]= {questionId: scope.index, answerId: selection};
@@ -131,26 +132,7 @@ appTitan.directive('questionsAnswers', function() {
                 if(found === false) {
                     scope.chosenAnswersArr.push({questionId: scope.index, answerId: selection});
                 }
- 			};
+ 			};            
 		}
 	};
-});
-
-
-appTitan.directive('elemHeight', function($timeout){
-    return{
-        restrict:'A',
-        link: function(scope, element, attrs){
-            //scope.height = elem[0].offsetHeight;
-            //$timeout(function(){
-                //console.log(element.offsetHeight);
-                //element.css({
-                //    height: element.offsetHeight,
-                //});
-            //});
-            scope.$watch(element.offsetHeight, function(newValue, oldValue) {
-                console.log(newValue);
-            }, true);
-        }
-    };
 });
