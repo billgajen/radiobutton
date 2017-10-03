@@ -103,7 +103,13 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	//Generate scores
 	$scope.chosenAnswersArr = [];
 	$scope.showAnswers = function() {
-		console.log($scope.chosenAnswersArr);
+		var total = 0;
+		for(var i = 0; i < $scope.chosenAnswersArr.length; i++) {
+			if ($scope.chosenAnswersArr[i].answerId == '25092017735') {
+				total++;
+			}
+		}
+		console.log(total);
 	};
 	
 	

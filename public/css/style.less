@@ -492,7 +492,10 @@
 	/*	8.1 ----------------------------------------------
 		DEVICE WIDTH UPTO 640
 		-------------------------------------------------- */
-        .row {
+		@keyframes blinker {  
+			100% { border-color: #eb5c4a; background: rgba(235,92,74,0.2) }
+		}
+		.row {
             overflow: hidden;
             margin-left: 0;
             margin-right: 0;
@@ -688,7 +691,13 @@
 					p {
 						padding: 10px 10px 10px 40px;
 						border: 1px solid #ffbab2;
-						background: rgba(235,92, 74, 0.1);
+						/*background: rgba(235,92, 74, 0.1);*/
+						background: linear-gradient(to right, rgba(235,92, 74, 0.1) 50%, rgba(235,92, 74, 0.3) 50%);
+						background-size: 200% 100%;
+						background-position:left bottom;
+						-webkit-transition: all 0.5s ease;
+						-moz-transition: all 0.5s ease;
+						transition: all 0.5s ease;
 						border-radius: 8px;
 						cursor: pointer;
 						font-size: 16px;
@@ -713,9 +722,18 @@
 					}
 					&.selected {
 						p {
+							animation: blinker 0.40s linear;
+							animation-iteration-count: 3;
+
 							&:before {
 								content: '\62';
 							}
+						}
+					}
+					&.highlight {
+						p {
+							background-position:right bottom;
+							border-color: #eb5c4a;
 						}
 					}
 				}

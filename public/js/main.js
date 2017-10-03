@@ -22,9 +22,41 @@ $(function(){
 
 			// Quiz answer selection
 			$('.question-answers').on('click', '.question-answers__item__answers ul li', function(){
-				var selectionParent = $(this).parents('.question-answers__item');
-				$('.question-answers__item__answers ul li', selectionParent).removeClass('selected');
-				$(this).addClass('selected');
+				var $el = $(this);
+				var selectionParent = $el.parents('.question-answers__item');
+
+				$('.question-answers__item__answers ul li', selectionParent).removeClass('selected highlight');
+				$el.addClass('selected');
+
+				setTimeout(function(){
+					$el.addClass('highlight');
+				}, 1000);
+				
+				//Scroll to next question and position it to the middle of the screen when click on an answer
+				function goToNextEl(elHeight){
+					$('html,body').animate({
+						scrollTop: elHeight},
+						'slow');
+				}
+				var viewportHeight = $(window).height(),
+					selectionNextSibling = selectionParent.next('.question-answers__item');
+					
+				
+				if (selectionNextSibling.length !== 0) {
+					var nextSiblingHeight = selectionNextSibling.height(),
+						nextSiblingPos = selectionNextSibling.offset().top,
+						middlePosition = (viewportHeight - nextSiblingHeight)/2,
+						offset;
+				
+					if (nextSiblingHeight < viewportHeight) {
+						offset = nextSiblingPos - ((viewportHeight / 2) - (nextSiblingHeight / 2));
+					} else {
+						offset = nextSiblingPos + 105;
+					}
+					setTimeout(function(){
+						goToNextEl(offset);
+					}, 1500);
+				}
 			});
             
             // Quiz title area effects
@@ -52,9 +84,7 @@ $(function(){
                     });
                 });
             });
-            
-            //Position each question to middle
- 
+
 			// Article share
 			$('.share a').not('.share .email a, .share .print a').click(function(){
 				window.open(this.href, 'Share', "width=600, height=600");

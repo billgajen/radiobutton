@@ -13,7 +13,7 @@
        <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css">
        <link rel="stylesheet" type="text/css" href="/css/font-icons.css">
        <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <title>pTitan</title>
+       <title>Campaign Page</title>
     </head>
     <body ng-app="appTitan" ng-controller="MainController">
         <header>
@@ -21,12 +21,24 @@
                <div class="logo"><a href="#"><img src="/images/logo-qol.png" alt="logo"></a></div>
                 <nav>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li>
+                        	<a href="#">Categories</a>
+                        	<ul>
+                        		<li><a href="#">Automobile</a></li>
+                        		<li><a href="#">Education</a></li>
+                        		<li><a href="#">General</a></li>
+                        		<li><a href="#">Geography</a></li>
+                        		<li><a href="#">Movies</a></li>
+                        		<li><a href="#">Music</a></li>
+                        		<li><a href="#">Nature</a></li>
+                        		<li><a href="#">Politics</a></li>
+                        		<li><a href="#">Science</a></li>
+                        		<li><a href="#">Sports</a></li>
+                        	</ul>
+                        </li>
                     </ul>
                 </nav>
-                <button class="camp-button">Start Campaign</button>
+                <button class="camp-button">Create a Quiz</button>
            </div>
         </header>
         <div ui-view></div>

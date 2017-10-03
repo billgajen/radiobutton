@@ -62,7 +62,7 @@ app.get('/startCampaign', function(req, res){
 });
 
 app.get('/viewQuiz', function(req, res){
-    res.sendFile(__dirname + '/public/views/campaign.html');
+    res.sendFile(__dirname + '/public/views/view-quiz.html');
 });
 
 app.post('/api/postQuiz', function(req, res) {
