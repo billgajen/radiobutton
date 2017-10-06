@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var base64ImageToFile = require('base64image-to-file');
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 
 //Mongoose Promise
 mongoose.Promise = Promise;
