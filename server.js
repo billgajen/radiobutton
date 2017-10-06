@@ -61,7 +61,7 @@ var Quiz = mongoose.model('Quiz', quizSchema);
 Quiz.collection.createIndex({"$**":"text"});
 
 //Routes
-app.get('/startCampaign', function(req, res){
+app.get('/', function(req, res){
 	res.sendFile(__dirname + '/public/views/start-campaign.html');
 });
 
