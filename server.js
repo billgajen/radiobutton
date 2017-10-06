@@ -4,12 +4,12 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var base64ImageToFile = require('base64image-to-file');
-var port = process.env.PORT || 3000;
+//var port = process.env.MONGOLAB_URI;
 
 //Mongoose Promise
 mongoose.Promise = Promise;
 //Database connection
-mongoose.connect('mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://billgajen:Bmangal238#@ds127864.mlab.com:27864/radioquiz');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/dist'));
@@ -137,6 +137,7 @@ app.get('/search/:keywords', function(req, res){
 	});
 });
 
+var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('App listening on port' + port);
 
