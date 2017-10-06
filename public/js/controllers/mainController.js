@@ -102,6 +102,11 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	
 	//Generate scores
 	$scope.chosenAnswersArr = [];
+	$scope.totalCorrectAnswers = 0;
+	$scope.imageURI = {
+		uri: ''
+	};
+	
 	$scope.showAnswers = function() {
 		var total = 0;
 		for(var i = 0; i < $scope.chosenAnswersArr.length; i++) {
@@ -109,9 +114,27 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 				total++;
 			}
 		}
-		console.log(total);
+		$scope.totalCorrectAnswers = total;
+		html2canvas($('.score-card'), {
+			onrendered: function(canvas) {
+				var myImage = canvas.toDataURL("image/png");
+				$scope.imageURI.uri = myImage;
+				$scope.postCanvasImage($scope.imageURI);
+			}
+		
+		});
 	};
 	
+	//Post image 
+    $scope.postCanvasImage = function(imageUri){
+        $http.post('/api/postCanvasImage', imageUri)
+            .success(function(data) {
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
 	
 }]);
 

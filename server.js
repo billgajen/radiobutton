@@ -3,6 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var base64ImageToFile = require('base64image-to-file');
 var port = process.env.PORT || 3000;
 
 //Mongoose Promise
@@ -65,6 +66,7 @@ app.get('/viewQuiz', function(req, res){
     res.sendFile(__dirname + '/public/views/view-quiz.html');
 });
 
+// Post Quiz
 app.post('/api/postQuiz', function(req, res) {
     Quiz.create({
         title: req.body.title,
@@ -73,6 +75,15 @@ app.post('/api/postQuiz', function(req, res) {
         questionAndAnswers : req.body.questionAndAnswers,
         done : false
     });
+});
+
+// Upload image
+app.post('/api/postCanvasImage', function(req, res) {
+	base64ImageToFile(req.body.uri, './public/images/uploads/', 'gtest', function(err) {
+		if(err) {
+		  return console.error(err);
+		}
+	});
 });
 
 //Get quiz data
