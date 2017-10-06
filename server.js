@@ -18,6 +18,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(morgan('dev'));
 
+// Jade Template Engine
+app.set('view engine', 'jade');
+
 //Database Schema / Model
 var Schema = mongoose.Schema;
 
@@ -62,8 +65,21 @@ app.get('/startCampaign', function(req, res){
 	res.sendFile(__dirname + '/public/views/start-campaign.html');
 });
 
+// View Quiz page
 app.get('/viewQuiz', function(req, res){
     res.sendFile(__dirname + '/public/views/view-quiz.html');
+	
+	// Redirect social media(FB & Twitter) crawler
+	var userAgent = req.headers['user-agent'];
+    if (userAgent.startsWith('facebookexternalhit/1.1') || userAgent.startsWith('Twitterbot')) {
+		return res.redirect("/socialRich");
+    }
+});
+
+app.get('/socialRich', function(req, res){
+    res.render('social-rich',{
+		title: req.body.fileName
+	});
 });
 
 // Post Quiz

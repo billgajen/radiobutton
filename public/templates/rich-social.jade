@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    meta(property='og:title', content='#{entry.title}')
+ 	meta(property='og:description', content='#{description}')
+    meta(property='og:image', content='#{protocol}://#{site}#{fb_image}')
+    meta(property='og:url', content='#{protocol}://#{site}#{entry.get_absolute_url()}')
+    meta(property='og:site_name', content='Dustin Farris')
+    meta(property='og:type', content='article')
+    meta(name='twitter:card', content='#{protocol}://#{site}#{fb_image}')
+	
+  body
+    h1 #{Gtitle}!

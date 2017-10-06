@@ -103,9 +103,6 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	//Generate scores
 	$scope.chosenAnswersArr = [];
 	$scope.totalCorrectAnswers = 0;
-	$scope.imageURI = {
-		uri: ''
-	};
 	
 	$scope.showAnswers = function() {
 		var total = 0;
@@ -126,8 +123,25 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	};
 	
 	//Post image 
-    $scope.postCanvasImage = function(imageUri){
+	$scope.date = new Date();
+    $scope.uniqueNum = $scope.date.valueOf();
+	
+	$scope.imageURI = {
+		uri: '',
+		fileName: $scope.uniqueNum
+	};
+
+	$scope.postCanvasImage = function(imageUri){
         $http.post('/api/postCanvasImage', imageUri)
+            .success(function(data) {
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+	$scope.postSocialData = function(){
+        $http.post('/api/socialRich', $scope.imageURI)
             .success(function(data) {
                 console.log(data);
             })
