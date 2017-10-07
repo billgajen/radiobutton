@@ -95,7 +95,7 @@ app.post('/api/postQuiz', function(req, res) {
 
 // Upload image
 app.post('/api/postCanvasImage', function(req, res) {
-	base64ImageToFile(req.body.uri, './public/images/uploads/', 'gtest', function(err) {
+	base64ImageToFile(req.body.uri, './public/images/uploads/', req.body.fileName, function(err) {
 		if(err) {
 		  return console.error(err);
 		}
