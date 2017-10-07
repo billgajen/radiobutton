@@ -78,7 +78,7 @@ app.get('/viewQuiz', function(req, res){
 
 app.get('/socialRich', function(req, res){
     res.render('social-rich',{
-		title: req.body.fileName
+		socialImage: '/images/uploads/'+req.body.fileName+'.png'
 	});
 });
 
