@@ -86,7 +86,7 @@ $(function(){
             });
 
 			// Article share
-			$('.share a').not('.share .email a, .share .print a').click(function(){
+			$('.social-share').click(function(){
 				window.open(this.href, 'Share', "width=600, height=600");
 				return false;
 			});
