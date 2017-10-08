@@ -78,7 +78,8 @@ app.get('/viewQuiz', function(req, res){
 
 app.get('/socialRich', function(req, res){
     res.render('social-rich',{
-		socialImage: '/images/uploads/'+req.body.fileName+'.png'
+		socialImage: '/images/uploads/'+req.body.fileName+'.png',
+		title: 'Super G Test'
 	});
 });
 
