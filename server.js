@@ -70,15 +70,15 @@ app.get('/viewQuiz', function(req, res){
     res.sendFile(__dirname + '/public/views/view-quiz.html');
 	
 	// Redirect social media(FB & Twitter) crawler
-	var userAgent = req.headers['user-agent'];
-    if (userAgent.startsWith('facebookexternalhit/1.1') || userAgent.startsWith('Twitterbot')) {
-		return res.redirect("/socialRich");
-    }
+//	var userAgent = req.headers['user-agent'];
+//    if (userAgent.startsWith('facebookexternalhit/1.1') || userAgent.startsWith('Twitterbot')) {
+//		return res.redirect("/socialRich/");
+//    }
 });
 
-app.get('/socialRich', function(req, res){
+app.get('/socialRich/:imageName', function(req, res){
     res.render('social-rich',{
-		socialImage: '/images/uploads/'+req.body.fileName+'.png',
+		socialImage: 'https://kwikwiz.herokuapp.com/images/uploads/'+req.params.imageName+'.png',
 		title: 'Super G Test'
 	});
 });
