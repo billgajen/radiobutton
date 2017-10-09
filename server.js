@@ -73,7 +73,7 @@ app.get('/viewQuiz', function(req, res){
 	// Redirect social media(FB & Twitter) crawler
 	var userAgent = req.headers['user-agent'];
     if (userAgent.startsWith('facebookexternalhit/1.1') || userAgent.startsWith('Twitterbot')) {
-		return res.redirect("/socialRich/imageName");
+		return res.redirect('/socialRich/'+imageName+'');
     }
 });
 
