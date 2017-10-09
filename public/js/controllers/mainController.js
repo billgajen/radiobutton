@@ -101,6 +101,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 		return decodeURIComponent(results[2].replace(/\+/g, " "));
 	};
     $scope.qStringGPQ = $scope.getQueryParams('gpQ');
+	
     $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
     	$scope.quizData = data;
@@ -135,6 +136,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	$scope.date = new Date();
     $scope.uniqueNum = $scope.date.valueOf();
 	$scope.url = $location.absUrl();
+	$scope.standardUrl = $scope.url.slice(0, $scope.url.indexOf('&'));
 	$scope.imageURI = {
 		uri: '',
 		fileName: $scope.uniqueNum
