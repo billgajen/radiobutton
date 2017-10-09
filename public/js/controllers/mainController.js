@@ -136,7 +136,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	$scope.date = new Date();
     $scope.uniqueNum = $scope.date.valueOf();
 	$scope.url = $location.absUrl();
-	$scope.standardUrl = $scope.url.substring(0, $scope.url.indexOf('&'));
+	$scope.standardUrl = $scope.url.split("&")[0];;
 	$scope.imageURI = {
 		uri: '',
 		fileName: $scope.uniqueNum
