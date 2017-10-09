@@ -91,7 +91,16 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	
     //Get Quiz data
     $scope.quizData = '';
-    $scope.qStringGPQ = $location.search().gpQ;
+	$scope.getQueryParams = function(name, url){
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	};
+    $scope.qStringGPQ = $scope.getQueryParams('gpQ');
     $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
     	$scope.quizData = data;
@@ -125,7 +134,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	//Post image 
 	$scope.date = new Date();
     $scope.uniqueNum = $scope.date.valueOf();
-	
+	$scope.url = $location.absUrl();
 	$scope.imageURI = {
 		uri: '',
 		fileName: $scope.uniqueNum
