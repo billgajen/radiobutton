@@ -71,6 +71,7 @@ app.get('/viewQuiz', function(req, res){
 	
 	var questionId = req.query.gpQ;
 	var imageName = req.query.shareId;
+	
 	// Redirect social media(FB & Twitter) crawler
 	var userAgent = req.headers['user-agent'];
 	var redirectUrl = '/socialRich/'+questionId+'/'+imageName;
@@ -82,19 +83,16 @@ app.get('/viewQuiz', function(req, res){
 
 app.get('/socialRich/:qId/:imageName', function(req, res){
 	
-	var quizTitle;
-	
 	Quiz.find({_id:ObjectId(req.params.qId)}, function(err, quiz) {
 		if (err) throw err;
 
-		// Quiz objects
-		quizTitle = res.json(quiz[0].title);
-		
-	});
-	console.log(quizTitle);
-    res.render('social-rich',{
-		socialImage: 'https://kwikwiz.herokuapp.com/images/uploads/'+req.params.imageName+'.png',
-		title: quizTitle
+		// Rendering social share page
+		res.render('social-rich',{
+			socialImage: 'https://kwikwiz.herokuapp.com/images/uploads/'+req.params.imageName+'.png',
+			title: quiz[0].title,
+			intro: quiz[0].intro,
+			pageUrl: 'https://kwikwiz.herokuapp.com/viewQuiz?gpQ='+req.params.qId
+		});
 	});
 });
 
