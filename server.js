@@ -91,7 +91,7 @@ app.get('/socialRich/:qId/:imageName', function(req, res){
 			socialImage: 'https://kwikwiz.herokuapp.com/images/uploads/'+req.params.imageName+'.png',
 			title: quiz[0].title,
 			intro: quiz[0].intro,
-			pageUrl: 'https://kwikwiz.herokuapp.com/viewQuiz?gpQ='+req.params.qId
+			pageUrl: 'https://kwikwiz.herokuapp.com/viewQuiz?gpQ='+req.params.qId+'&shareId='+req.params.imageName
 		});
 	});
 });
