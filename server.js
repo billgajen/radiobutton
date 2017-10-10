@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var base64ImageToFile = require('base64image-to-file');
+var FileCleaner = require('cron-file-cleaner').FileCleaner;
 var port = process.env.PORT || 3000;
 
 //Mongoose Promise
@@ -53,6 +54,13 @@ var quizSchema = new Schema({
 }, {
     timestamps: true
 });
+
+// Delete old(older than 10mins) uploaded(dynamically generated) images every 30mins
+var fileWatcher = new FileCleaner(__dirname + '/public/images/uploads/', 600000,  '00 */30 * * * *', {
+	recursive: true,
+	timeField: 'ctime'
+});
+fileWatcher.start();
 
 //Post data
 var Quiz = mongoose.model('Quiz', quizSchema);
