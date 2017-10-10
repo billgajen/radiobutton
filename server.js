@@ -55,6 +55,13 @@ var quizSchema = new Schema({
     timestamps: true
 });
 
+// Delete old(older than 10mins) uploaded(dynamically generated) images every 30mins
+var fileWatcher = new FileCleaner(__dirname + '/public/images/uploads/', 600000,  '00 */30 * * * *', {
+	recursive: true,
+	timeField: 'ctime'
+});
+fileWatcher.start();
+
 //Post data
 var Quiz = mongoose.model('Quiz', quizSchema);
 
