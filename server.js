@@ -69,20 +69,32 @@ app.get('/', function(req, res){
 app.get('/viewQuiz', function(req, res){
     res.sendFile(__dirname + '/public/views/view-quiz.html');
 	
+	var questionId = req.query.gpQ;
 	var imageName = req.query.shareId;
 	// Redirect social media(FB & Twitter) crawler
 	var userAgent = req.headers['user-agent'];
-	var redirectUrl = '/socialRich/'+imageName;
-	console.log(redirectUrl);
-    if (userAgent.startsWith('facebookexternalhit/1.1') || userAgent.startsWith('Twitterbot')) {
+	var redirectUrl = '/socialRich/'+questionId+'/'+imageName;
+
+	if (userAgent.startsWith('facebookexternalhit/1.1') || userAgent.startsWith('Twitterbot')) {
 		return res.redirect(redirectUrl);
     }
 });
 
-app.get('/socialRich/:imageName', function(req, res){
+app.get('/socialRich/:qId/:imageName', function(req, res){
+	
+	var quizTitle;
+	
+	Quiz.find({_id:ObjectId(req.params.qId)}, function(err, quiz) {
+		if (err) throw err;
+
+		// Quiz objects
+		quizTitle = res.json(quiz[0].title);
+		
+	});
+	console.log(quizTitle);
     res.render('social-rich',{
 		socialImage: 'https://kwikwiz.herokuapp.com/images/uploads/'+req.params.imageName+'.png',
-		title: 'Super G Test'
+		title: quizTitle
 	});
 });
 
