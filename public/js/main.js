@@ -23,7 +23,7 @@ $(function(){
 			function goToNextEl(elHeight){
 				$('html,body').animate({
 					scrollTop: elHeight
-				},'slow');
+				},1000);
 			}
 			
 			// Quiz answer selection
@@ -56,7 +56,7 @@ $(function(){
 					}
 					setTimeout(function(){
 						goToNextEl(offset);
-					}, 1500);
+					}, 1000);
 				}
 			});
             
