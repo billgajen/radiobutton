@@ -90,6 +90,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
     };
 	
     //Get Quiz data
+	$scope.userName = '';
     $scope.quizData = '';
 	$scope.getQueryParams = function(name, url){
 		if (!url) url = window.location.href;
@@ -105,9 +106,6 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
     $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
     	$scope.quizData = data;
-    })
-    .catch(function(errRes) {
-      // Handle errRess
     });
 	
 	//Generate scores
@@ -136,7 +134,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 	$scope.date = new Date();
     $scope.uniqueNum = $scope.date.valueOf();
 	$scope.url = $location.absUrl();
-	$scope.standardUrl = $scope.url.split("&")[0];;
+	$scope.standardUrl = $scope.url.split("&")[0];
 	$scope.imageURI = {
 		uri: '',
 		fileName: $scope.uniqueNum
