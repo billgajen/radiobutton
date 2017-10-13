@@ -62,6 +62,13 @@
         <section class="row quiz-area ">
             <div class="row__content row__content--quiz">
             	<div class="col-sm-12">
+            		<div class="user-name">
+            			<form>
+            				<label for="userName">Your name:</label>
+            				<input type="text" id="userName" name="userName" ng-model="userName">
+            			</form>
+            			<button>Start meeesiq</button>
+            		</div>
             		<div class="question-answers">
 						<ul>
 							<li class="question-answers__item" ng-repeat="questions in quizData.questionAndAnswers">

@@ -20,6 +20,12 @@ $(function(){
 
 		var general = function () { //-------Public Method
 
+			function goToNextEl(elHeight){
+				$('html,body').animate({
+					scrollTop: elHeight
+				},'slow');
+			}
+			
 			// Quiz answer selection
 			$('.question-answers').on('click', '.question-answers__item__answers ul li', function(){
 				var $el = $(this);
@@ -33,11 +39,6 @@ $(function(){
 				}, 1000);
 				
 				//Scroll to next question and position it to the middle of the screen when click on an answer
-				function goToNextEl(elHeight){
-					$('html,body').animate({
-						scrollTop: elHeight},
-						'slow');
-				}
 				var viewportHeight = $(window).height(),
 					selectionNextSibling = selectionParent.next('.question-answers__item');
 					
@@ -59,6 +60,27 @@ $(function(){
 				}
 			});
             
+			$('.user-name button').on('click', function(){
+				var viewportHeight = $(window).height(),
+					firstQuestion = $('.question-answers ul .question-answers__item:first-child');
+					
+				
+				if (firstQuestion.length !== 0) {
+					var firstQuestionHeight = firstQuestion.height(),
+						firstQuestionPos = firstQuestion.offset().top,
+						middlePosition = (viewportHeight - firstQuestionHeight)/2,
+						offset;
+				
+					if (firstQuestionHeight < viewportHeight) {
+						offset = firstQuestionPos - ((viewportHeight / 2) - (firstQuestionHeight / 2));
+					} else {
+						offset = firstQuestionPos + 105;
+					}
+					setTimeout(function(){
+						goToNextEl(offset);
+					}, 200);
+				}
+			});
             // Quiz title area effects
             $(window).bind('load', function() {
                 
