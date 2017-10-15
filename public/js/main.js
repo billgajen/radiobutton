@@ -50,9 +50,9 @@ $(function(){
 						offset;
 				
 					if (nextSiblingHeight < viewportHeight) {
-						offset = nextSiblingPos - ((viewportHeight / 2) - (nextSiblingHeight / 2));
+						offset = nextSiblingPos - ((viewportHeight / 2) - (nextSiblingHeight / 2)) - 20;
 					} else {
-						offset = nextSiblingPos + 105;
+ 						offset = nextSiblingPos - 50;
 					}
 					setTimeout(function(){
 						goToNextEl(offset);
