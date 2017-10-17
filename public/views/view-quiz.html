@@ -82,25 +82,6 @@
                         </div>
             		</div>
             	</div>
-             	<div class="col-sm-12">
-            		<div class="row related-quizes">
-            			<div class="col-sm-4 related-quizes__item">
-            				<div class="related-quizes__item__image">
-            					<img src="/images/banner.jpg" alt="Quiz Banner" />
-            				</div>
-            				<div class="related-quizes__item__info">
-            					<h4>{{ relatedQuizData.title }}</h4>
-            					<p>{{ relatedQuizData.intro }}</p>
-            				</div>
-            				<div class="related-quizes__item__sample-question-answers">
-            					<h5>{{ relatedQuizData.title }}</h5>
-								<ul>
-									<li>{{ quizData.questionAndAnswers }}</li>
-								</ul>
-            				</div>
-            			</div>
-            		</div>
-            	</div>
             </div>
         </section>
         <footer class="row">
@@ -110,7 +91,7 @@
         		</div>
         	</div>
         </footer>
-        <div class="score-card">
+        <section class="score-card">
             <h3>{{userName === '' ? 'I' : userName}}</h3>
             <h2>Scored</h2>
             <p class="score">
@@ -140,22 +121,69 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="results-screen-popup">
-            <h3>{{totalCorrectAnswers >= quizData.questionAndAnswers.length/2 ? 'Wow! You ' : 'Oh! You only '}}scored</h3>
-            <h2>{{totalCorrectAnswers}} out of {{quizData.questionAndAnswers.length}} </h2>
-            <img src="/images/uploads/{{uniqueNum}}.png" alt="Score Card" />
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return;
-              js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=209209405812373";
-              fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            <div class="fb-share-button" data-href="{{standardUrl}}&shareId={{uniqueNum}}" data-layout="box_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{standardUrl}}&shareId={{uniqueNum}}&amp;src=sdkpreparse">Share</a></div>
-            <a class="social-share" href="https://www.facebook.com/sharer/sharer.php?u={{standardUrl}}&shareId={{uniqueNum}}">Share on Facebook</a>
-            <button onclick="location.reload();">Retry Quiz</button>
-        </div>
+        </section>
+        <section class="row results-area">
+			<div class="row__content results">
+				<div class="col-sm-12 results__header">
+					<h3>{{totalCorrectAnswers >= quizData.questionAndAnswers.length/2 ? 'Wow! You ' : 'Oh! You only '}}scored</h3>
+					<p class="score">
+						<span class="score__total-correct">{{totalCorrectAnswers}}</span>
+						<span class="score__total-questions">{{quizData.questionAndAnswers.length}}</span>
+					</p>
+				</div>
+				<div class="col-sm-12 results__body">
+					<h3>Share your score and tag some friends</h3>
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) return;
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=209209405812373";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-share-button" data-href="{{standardUrl}}&shareId={{uniqueNum}}" data-layout="box_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{standardUrl}}&shareId={{uniqueNum}}&amp;src=sdkpreparse">Share</a></div>
+				</div>
+				<div class="col-sm-12 results__footer">
+					<div class="results__footer__retry" ng-show="{{totalCorrectAnswers < quizData.questionAndAnswers}}">
+						<h4>Want know all the answers? Keep retrying till you get all right ;-P</h4>
+						<button onclick="location.reload();">Retry Quiz</button>
+					</div>
+				</div>
+			</div>
+			<div class="row__content related">
+				<div class="col-sm-12">
+					<h2>Related Quizes</h2>
+				</div>
+				<div class="col-sm-4" ng-repeat="related in relatedQuizData | limitTo:3">
+					<div class="related__item">
+						<div class="related__item__image">
+							<img src="/images/banner.jpg" alt="Quiz Banner" />
+						</div>
+						<div class="related__item__info">
+							<h4>{{ related.title }}</h4>
+						</div>
+						<div class="related__item__sample-question-answers">
+							<h5>{{ related.questionAndAnswers[0].questionName }}</h5>
+						</div>
+						<div class="related__item__sample-question-answers__item-answers">
+							<ul class="row">
+								<li class="col-sm-6">
+									<p>{{related.questionAndAnswers[0].answerOne.value}}</p>
+								</li>
+								<li class="col-sm-6">
+									<p>{{related.questionAndAnswers[0].answerTwo.value}}</p>
+								</li>
+								<li class="col-sm-6">
+									<p>{{related.questionAndAnswers[0].answerThree.value}}</p>
+								</li>
+								<li class="col-sm-6">
+									<p>{{related.questionAndAnswers[0].answerFour.value}}</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+        </section>
     </body>
 </html>

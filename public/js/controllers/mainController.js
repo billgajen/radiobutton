@@ -92,6 +92,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
     //Get Quiz data
 	$scope.userName = '';
     $scope.quizData = '';
+	$scope.relatedQuizData = '';
 	$scope.getQueryParams = function(name, url){
 		if (!url) url = window.location.href;
 		name = name.replace(/[\[\]]/g, "\\$&");
@@ -106,12 +107,21 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
     $http.get('/api/getQuizData/'+$scope.qStringGPQ+'')
     .success(function(data) {
     	$scope.quizData = data;
-    });
+    }).then(function(){
+		$http.get('/api/getRelatedData/'+$scope.quizData.category+'')
+		.success(function(data) {
+			$scope.relatedQuizData = data;
+		});
+	});
+	
+	//Related Quiz Data
 	
 	//Generate scores
 	$scope.chosenAnswersArr = [];
 	$scope.totalCorrectAnswers = 0;
+	$scope.shareImageLoc = '';
 	
+	//Get score
 	$scope.showAnswers = function() {
 		var total = 0;
 		for(var i = 0; i < $scope.chosenAnswersArr.length; i++) {
@@ -128,6 +138,7 @@ appTitan.controller('MainController', ['$scope', '$http', '$location', function(
 			}
 		
 		});
+		$scope.shareImageLoc = '/images/uploads/'+$scope.uniqueNum+'.png';
 	};
 	
 	//Post image 

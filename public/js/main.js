@@ -23,7 +23,7 @@ $(function(){
 			function goToNextEl(elHeight){
 				$('html,body').animate({
 					scrollTop: elHeight
-				},1000);
+				},800);
 			}
 			
 			// Quiz answer selection
@@ -36,7 +36,7 @@ $(function(){
 
 				setTimeout(function(){
 					$el.addClass('highlight');
-				}, 1000);
+				}, 800);
 				
 				//Scroll to next question and position it to the middle of the screen when click on an answer
 				var viewportHeight = $(window).height(),
@@ -56,10 +56,11 @@ $(function(){
 					}
 					setTimeout(function(){
 						goToNextEl(offset);
-					}, 1000);
+					}, 800);
 				}
 			});
             
+			// Enter User name and on submit to first question
 			$('.user-name button').on('click', function(){
 				var viewportHeight = $(window).height(),
 					firstQuestion = $('.question-answers ul .question-answers__item:first-child');
@@ -81,6 +82,7 @@ $(function(){
 					}, 200);
 				}
 			});
+			
             // Quiz title area effects
             $(window).bind('load', function() {
                 
@@ -106,7 +108,15 @@ $(function(){
                     });
                 });
             });
-
+			
+			// Show results
+			$('.question-answers--submit button').on('click', function(e){
+				e.preventDefault();
+				$('.quiz-area').fadeOut(1500, function(){
+					$('.results-area').show().addClass('on');
+				});
+			});
+			
 			// Article share
 			$('.social-share').click(function(){
 				window.open(this.href, 'Share', "width=600, height=600");

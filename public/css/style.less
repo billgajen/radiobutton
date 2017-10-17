@@ -921,6 +921,36 @@
 				margin-bottom: 30px;
 			}
 		}
+		.results-area {
+			display: none;
+			text-align: center;
+			position: absolute;
+			top: 2400px;
+			transition: all 0.7s ease-in;
+			
+			&.on {
+				top: 105px;
+			}
+			.score  {
+				background: url('/images/score-background.png') no-repeat;
+				background-size: cover;
+				width: 228px;
+				height: 231px;
+				position: relative;
+				top: 0;
+				left: 0;
+				margin: 20px auto;
+				
+				.score__total-correct {
+					top: 80px ;
+					left: 70px;
+				}
+				.score__total-questions {
+					top: 120px ;
+					left: 110px;
+				}
+			}
+		}
                 
     /*	8.2 ----------------------------------------------
 		DEVICE WIDTH FROM 641
