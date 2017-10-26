@@ -697,6 +697,32 @@
 		.question-answers__item {
 			margin-bottom: 30px;
 		}
+		#answerbubbleStyle(){
+			padding: 10px 10px 10px 40px;
+			border: 1px solid #ffbab2;
+			background: linear-gradient(to right, rgba(235,92, 74, 0.1) 50%, rgba(235,92, 74, 0.3) 50%);
+			background-size: 200% 100%;
+			background-position:left bottom;
+			-webkit-transition: all 0.5s ease;
+			-moz-transition: all 0.5s ease;
+			transition: all 0.5s ease;
+			border-radius: 8px;
+			cursor: pointer;
+			font-size: 16px;
+			line-height: 19px;
+			position: relative;
+			
+			&:before {
+				position: absolute;
+				content: '\61';
+				font-family: 'radiobutton';
+				left: 10px;
+				top: 10px;
+				font-size: 22px;
+				line-height: 22px;
+				color: @brandColor;
+			}
+		}
 		.question-answers__item__answers {
 			ul {
 				padding-left: 0;
@@ -705,31 +731,7 @@
 					margin-bottom: 20px;
 					
 					p {
-						padding: 10px 10px 10px 40px;
-						border: 1px solid #ffbab2;
-						/*background: rgba(235,92, 74, 0.1);*/
-						background: linear-gradient(to right, rgba(235,92, 74, 0.1) 50%, rgba(235,92, 74, 0.3) 50%);
-						background-size: 200% 100%;
-						background-position:left bottom;
-						-webkit-transition: all 0.5s ease;
-						-moz-transition: all 0.5s ease;
-						transition: all 0.5s ease;
-						border-radius: 8px;
-						cursor: pointer;
-						font-size: 16px;
-						line-height: 19px;
-						position: relative;
-						
-						&:before {
-							position: absolute;
-							content: '\61';
-							font-family: 'radiobutton';
-							left: 10px;
-							top: 10px;
-							font-size: 22px;
-							line-height: 22px;
-							color: @brandColor;
-						}
+						#answerbubbleStyle;
 					}
 					&:hover {
 						p {
@@ -887,8 +889,8 @@
 				}
 			}
 			.question-answers__item__answers ul li {
-				width: 230px;
-                min-width: 230px;
+				width: 220px;
+                min-width: 220px;
                 float: left;
 				margin-right: 5px;
 				margin-bottom: 10px;
@@ -922,10 +924,13 @@
 			}
 		}
 		.results-area {
+			width: 100%;
 			display: none;
 			text-align: center;
 			position: absolute;
 			top: 2400px;
+			left: 50%;
+			transform: translate(-50%, 0);
 			transition: all 0.7s ease-in;
 			
 			&.on {
@@ -948,6 +953,47 @@
 				.score__total-questions {
 					top: 120px ;
 					left: 110px;
+				}
+			}
+			.results {
+				margin-bottom: 50px;
+			}
+			.related {
+				h2 {
+					margin-bottom: 30px; 
+				}
+			}
+		}
+		.related__item {
+			border: 1px solid #ccc;
+		}
+		.related__item__info {
+			padding: 0 10px;
+		}
+		.related__item__sample-question-answers {
+			padding: 0 10px;
+			h5 {
+				font-size: 16px;
+				margin-bottom: 20px;
+			}
+		}
+		.related__item__sample-question-answers__item-answers {
+			padding: 0 10px;
+			ul {
+				li {
+					margin-bottom: 5px;
+					
+					p {
+						#answerbubbleStyle;
+						padding: 5px 5px 5px 20px;
+						font-size: 14px;
+						
+						&:before {
+							font-size: 16px;
+							left: 5px;
+							top: 5px;
+						}
+					}
 				}
 			}
 		}

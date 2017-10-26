@@ -84,13 +84,6 @@
             	</div>
             </div>
         </section>
-        <footer class="row">
-        	<div class="row__content">
-        		<div class="col-sm-12">
-        			
-        		</div>
-        	</div>
-        </footer>
         <section class="score-card">
             <h3>{{userName === '' ? 'I' : userName}}</h3>
             <h2>Scored</h2>
@@ -144,8 +137,8 @@
 					<div class="fb-share-button" data-href="{{standardUrl}}&shareId={{uniqueNum}}" data-layout="box_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{standardUrl}}&shareId={{uniqueNum}}&amp;src=sdkpreparse">Share</a></div>
 				</div>
 				<div class="col-sm-12 results__footer">
-					<div class="results__footer__retry" ng-show="{{totalCorrectAnswers < quizData.questionAndAnswers}}">
-						<h4>Want know all the answers? Keep retrying till you get all right ;-P</h4>
+					<div class="results__footer__retry">
+						<h4>Want know all the answers? Keep doing the quiz until you get all right ;-P</h4>
 						<button onclick="location.reload();">Retry Quiz</button>
 					</div>
 				</div>
@@ -154,10 +147,10 @@
 				<div class="col-sm-12">
 					<h2>Related Quizes</h2>
 				</div>
-				<div class="col-sm-4" ng-repeat="related in relatedQuizData | limitTo:3">
+				<div class="col-sm-6 col-md-4" ng-repeat="related in relatedQuizData | limitTo:3">
 					<div class="related__item">
 						<div class="related__item__image">
-							<img src="/images/banner.jpg" alt="Quiz Banner" />
+							<a href="/viewQuiz?gpQ={{related._id}}"><img src="/images/banner.jpg" alt="Quiz Banner" /></a>
 						</div>
 						<div class="related__item__info">
 							<h4>{{ related.title }}</h4>
@@ -185,5 +178,12 @@
 				</div>
 			</div>
         </section>
+        <footer class="row">
+        	<div class="row__content">
+        		<div class="col-sm-12">
+        			
+        		</div>
+        	</div>
+        </footer>
     </body>
 </html>
